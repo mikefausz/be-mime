@@ -4,6 +4,10 @@ import javax.persistence.*;
 
 /**
  * Created by branden on 3/17/16 at 13:56.
+ *
+ * This Class is defined to map a Mime (user) to a Admimerer (also of type Mime)
+ * Admimerer is a Mime that the original Mime(User) has a mime interest in.
+ *
  */
 @Entity
 public class Admimerer {
