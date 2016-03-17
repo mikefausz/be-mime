@@ -11,6 +11,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  */
 public interface MimeRepository extends CrudRepository<Mime, Integer>{
+    Mime findByUserName(String userName);
 
 
 
