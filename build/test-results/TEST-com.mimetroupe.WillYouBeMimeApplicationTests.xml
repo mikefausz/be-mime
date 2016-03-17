@@ -1,30 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.mimetroupe.WillYouBeMimeApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-03-17T19:58:21" hostname="OTR.local" time="0.041">
+<testsuite name="com.mimetroupe.WillYouBeMimeApplicationTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2016-03-17T20:25:37" hostname="OTR.local" time="0.001">
   <properties/>
-  <testcase name="contextLoads" classname="com.mimetroupe.WillYouBeMimeApplicationTests" time="0.041"/>
-  <system-out><![CDATA[15:58:15.337 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.346 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-15:58:15.354 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-15:58:15.365 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.mimetroupe.WillYouBeMimeApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
-15:58:15.390 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@a1089b4 declaringClass = 'com.mimetroupe.WillYouBeMimeApplicationTests', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
-15:58:15.396 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTests-context.xml] does not exist
-15:58:15.396 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTestsContext.groovy] does not exist
-15:58:15.396 [Test worker] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-15:58:15.401 [Test worker] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.405 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.mimetroupe.WillYouBeMimeApplicationTests]: using defaults.
-15:58:15.423 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-15:58:15.444 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@69186b91, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5bead958, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@273c625a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2160a502, org.springframework.test.context.transaction.TransactionalTestExecutionListener@b8e065c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a32e6c]
-15:58:15.448 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.448 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.449 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.449 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.452 [Test worker] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@38834508 testClass = WillYouBeMimeApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@46ab77be testClass = WillYouBeMimeApplicationTests, locations = '{}', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
-15:58:15.452 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.452 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-15:58:15.543 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-15:58:15.545 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-15:58:15.545 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-15:58:15.547 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+  <testcase name="contextLoads" classname="com.mimetroupe.WillYouBeMimeApplicationTests" time="0.001">
+    <failure message="java.lang.IllegalStateException: Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:183)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:123)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:249)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:193)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:105)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:56)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:64)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:106)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:360)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54)
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'willYouBeMimeController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766)
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.SpringApplicationContextLoader.loadContext(SpringApplicationContextLoader.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 45 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331)
+	... 61 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545)
+	... 63 more
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.data.mapping.PropertyPath.&lt;init&gt;(PropertyPath.java:77)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:329)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:309)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:272)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:243)
+	at org.springframework.data.repository.query.parser.Part.&lt;init&gt;(Part.java:76)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.&lt;init&gt;(PartTree.java:235)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.buildTree(PartTree.java:373)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.&lt;init&gt;(PartTree.java:353)
+	at org.springframework.data.repository.query.parser.PartTree.&lt;init&gt;(PartTree.java:87)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.&lt;init&gt;(PartTreeJpaQuery.java:62)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:100)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:211)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:74)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.&lt;init&gt;(RepositoryFactorySupport.java:416)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:206)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.initAndReturn(RepositoryFactoryBeanSupport.java:251)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:237)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:92)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 73 more
+</failure>
+  </testcase>
+  <system-out><![CDATA[16:25:34.671 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.676 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+16:25:34.680 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+16:25:34.690 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.mimetroupe.WillYouBeMimeApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+16:25:34.706 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@da331a6 declaringClass = 'com.mimetroupe.WillYouBeMimeApplicationTests', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+16:25:34.716 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTests-context.xml] does not exist
+16:25:34.717 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTestsContext.groovy] does not exist
+16:25:34.717 [Test worker] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+16:25:34.719 [Test worker] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.722 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.mimetroupe.WillYouBeMimeApplicationTests]: using defaults.
+16:25:34.728 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+16:25:34.742 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@403888ba, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1928267c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1261ae3e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13f80dd8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@17013a45, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4f42e51f]
+16:25:34.745 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.745 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.746 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.746 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.748 [Test worker] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2100c09a testClass = WillYouBeMimeApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4ca26788 testClass = WillYouBeMimeApplicationTests, locations = '{}', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+16:25:34.749 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.749 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+16:25:34.806 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+16:25:34.807 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+16:25:34.807 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+16:25:34.809 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -34,44 +143,251 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.3.3.RELEASE)
 
-2016-03-17 15:58:15.860  INFO 3940 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Starting WillYouBeMimeApplicationTests on OTR.local with PID 3940 (/Users/branden/JavaProjects/willYouBeMime/build/classes/test started by branden in /Users/branden/JavaProjects/willYouBeMime)
-2016-03-17 15:58:15.861  INFO 3940 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : No active profile set, falling back to default profiles: default
-2016-03-17 15:58:15.966  INFO 3940 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@35e09bb8: startup date [Thu Mar 17 15:58:15 EDT 2016]; root of context hierarchy
-2016-03-17 15:58:17.060  INFO 3940 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
-2016-03-17 15:58:17.748  INFO 3940 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3cb9a218] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2016-03-17 15:58:18.205  INFO 3940 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
-2016-03-17 15:58:18.241  INFO 3940 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2016-03-17 16:25:35.054  INFO 4432 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Starting WillYouBeMimeApplicationTests on OTR.local with PID 4432 (/Users/branden/JavaProjects/willYouBeMime/build/classes/test started by branden in /Users/branden/JavaProjects/willYouBeMime)
+2016-03-17 16:25:35.055  INFO 4432 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : No active profile set, falling back to default profiles: default
+2016-03-17 16:25:35.129  INFO 4432 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2a5c29f1: startup date [Thu Mar 17 16:25:35 EDT 2016]; root of context hierarchy
+2016-03-17 16:25:35.884  INFO 4432 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-03-17 16:25:36.315  INFO 4432 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3a2aadcd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-03-17 16:25:36.680  INFO 4432 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-03-17 16:25:36.712  INFO 4432 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2016-03-17 15:58:18.337  INFO 3940 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
-2016-03-17 15:58:18.340  INFO 3940 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2016-03-17 15:58:18.344  INFO 3940 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
-2016-03-17 15:58:18.589  INFO 3940 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
-2016-03-17 15:58:18.909  INFO 3940 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2016-03-17 15:58:19.104  INFO 3940 --- [    Test worker] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
-2016-03-17 15:58:19.514  INFO 3940 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
-2016-03-17 15:58:19.514  INFO 3940 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
-2016-03-17 15:58:19.516  INFO 3940 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
-2016-03-17 15:58:19.523  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-17 15:58:19.525  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-17 15:58:19.526  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-17 15:58:19.528  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-17 15:58:19.530  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-17 15:58:19.533  INFO 3940 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-17 15:58:19.558  INFO 3940 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
-2016-03-17 15:58:20.730  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@35e09bb8: startup date [Thu Mar 17 15:58:15 EDT 2016]; root of context hierarchy
-2016-03-17 15:58:20.836  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/mime],methods=[POST]}" onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.createMime(com.mimetroupe.entities.Mime) throws java.lang.Exception
-2016-03-17 15:58:20.837  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/mime],methods=[GET]}" onto public java.util.List<com.mimetroupe.entities.Mime> com.mimetroupe.controllers.WillYouBeMimeController.displayAllMimesExceptUser(javax.servlet.http.HttpSession)
-2016-03-17 15:58:20.838  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.login(javax.servlet.http.HttpSession,java.lang.String,java.lang.String) throws com.mimetroupe.utilities.PasswordStorage$InvalidHashException,com.mimetroupe.utilities.PasswordStorage$CannotPerformOperationException
-2016-03-17 15:58:20.840  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2016-03-17 15:58:20.840  INFO 3940 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2016-03-17 15:58:20.891  INFO 3940 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-17 15:58:20.891  INFO 3940 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-17 15:58:20.966  INFO 3940 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-17 15:58:21.418  INFO 3940 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Started WillYouBeMimeApplicationTests in 5.861 seconds (JVM running for 7.077)
-2016-03-17 15:58:21.450  INFO 3940 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-17 15:58:21.450  INFO 3940 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-17 15:58:21.472  INFO 3940 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 22 ms
+2016-03-17 16:25:36.774  INFO 4432 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-03-17 16:25:36.776  INFO 4432 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-03-17 16:25:36.778  INFO 4432 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-03-17 16:25:36.968  INFO 4432 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-03-17 16:25:37.184  INFO 4432 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2016-03-17 16:25:37.306  INFO 4432 --- [    Test worker] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-03-17 16:25:37.618  INFO 4432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-03-17 16:25:37.619  INFO 4432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-03-17 16:25:37.620  INFO 4432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-03-17 16:25:37.626  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-17 16:25:37.628  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-17 16:25:37.628  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-17 16:25:37.629  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-17 16:25:37.630  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-17 16:25:37.631  INFO 4432 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-17 16:25:37.648  INFO 4432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-03-17 16:25:37.905  WARN 4432 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'willYouBeMimeController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+2016-03-17 16:25:37.905  INFO 4432 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-03-17 16:25:37.914 ERROR 4432 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'willYouBeMimeController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.test.SpringApplicationContextLoader.loadContext(SpringApplicationContextLoader.java:98) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:183) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:123) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:230) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:249) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:193) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:105) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:56) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:64) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:50) [gradle-plugins-2.9.jar:2.9]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93) [gradle-messaging-2.9.jar:2.9]
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source) [na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:106) [gradle-plugins-2.9.jar:2.9]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:360) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54) [gradle-base-services-2.9.jar:2.9]
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40) [gradle-base-services-2.9.jar:2.9]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_65]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_65]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 63 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:77) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:329) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:309) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:272) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:243) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:76) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:235) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.buildTree(PartTree.java:373) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:353) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:87) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:62) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:100) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:211) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:74) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.<init>(RepositoryFactorySupport.java:416) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:206) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.initAndReturn(RepositoryFactoryBeanSupport.java:251) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:237) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:92) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 73 common frames omitted
+
+2016-03-17 16:25:37.920  INFO 4432 --- [    Test worker] .b.l.ClasspathLoggingApplicationListener : Application failed to start with classpath: [file:/Users/branden/.gradle/caches/2.9/workerMain/gradle-worker.jar, file:/Users/branden/JavaProjects/willYouBeMime/build/classes/test/, file:/Users/branden/JavaProjects/willYouBeMime/build/resources/test/, file:/Users/branden/JavaProjects/willYouBeMime/build/classes/main/, file:/Users/branden/JavaProjects/willYouBeMime/build/resources/main/, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.3.RELEASE/c1f8f3102650e54259d69c519b45b64fbf5cd25b/spring-boot-starter-data-jpa-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-devtools/1.3.3.RELEASE/4802c8ddf34051b07a37124ca38dc7561fe44a47/spring-boot-devtools-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.3.RELEASE/f1ee2657f50844d8682b30a1f40aebff3ad60cce/spring-boot-starter-web-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.191/dec3540178ea889b2871b0ed56db14bbec9cfdfc/h2-1.4.191.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.3.RELEASE/f440856dcf4c3018c9005fa229e7509f28927a73/spring-boot-starter-test-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.3.RELEASE/e4a71ce6ae8e42a7535dd9f1a39f91d36c538f28/spring-boot-starter-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/1.3.3.RELEASE/f80c290f6a3dccb8255a594795a20048c63460da/spring-boot-starter-aop-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.3.3.RELEASE/f10ffeca4c879f1f66f30989cc0f133258934246/spring-boot-starter-jdbc-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-entitymanager/4.3.11.Final/27a119fcc2b91c50e5285dd11158fac2c38c9d1b/hibernate-entitymanager-4.3.11.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/javax.transaction/javax.transaction-api/1.2/d81aff979d603edd90dcd8db2abc1f4ce6479e3e/javax.transaction-api-1.2.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-jpa/1.9.4.RELEASE/80b83510e67aa085b7d91d2d096d90133ec995de/spring-data-jpa-1.9.4.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.5.RELEASE/ed09517441a276db2a7e0e7b60a390c52b8093af/spring-aspects-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.3.RELEASE/641cc375499d444e4efbc1801902260daa79758d/spring-boot-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.3.RELEASE/e7a4a25f74dac6b335ffabc43e3e8a6e3066340e/spring-boot-autoconfigure-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.3.RELEASE/541468d85cc2c94d2b538b0fa07c018847bb9b78/spring-boot-starter-tomcat-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.3.RELEASE/df2d5a437fa3093b8da99216c355189fe7b5e64/spring-boot-starter-validation-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.6.5/d50be1723a09befd903887099ff2014ea9020333/jackson-databind-2.6.5.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.5.RELEASE/49cd2430884b77172aa81e3fc33ef668ea1dab30/spring-web-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.5.RELEASE/cf463cce3e4453eb4b9a69de2dcdfd60c3c57e0/spring-webmvc-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/1.10.19/e8546f5bef4e061d8dd73895b4e8f40e3fe6effe/mockito-core-1.10.19.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/251207b29f0f38f61e3495a2f7fb053cf1bfe8c/spring-core-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.5.RELEASE/60bd0ac25869d515717284b77644d0416d3a38c5/spring-test-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.3.RELEASE/16b395c84f28b947f1c336aa461fda1e662bb3b6/spring-boot-starter-logging-1.3.3.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.16/d64fb662c9e42789149f5078a62a22edda786c6a/snakeyaml-1.16.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.5.RELEASE/858d6c70909b3ce7e07b59fc936f8ccfcd81c0aa/spring-aop-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.8.8/969c8d3d3d56db1e1c8721a03ef07d0c9ac3a2e4/aspectjweaver-1.8.8.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.0.32/55396c45fc8c34f31420a3b280fde4b1387b044d/tomcat-jdbc-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.5.RELEASE/205d2f1b902eac16a2ece772dc5ac6090b7e0b6f/spring-jdbc-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.0.Final/3616bb87707910296e2c195dc016287080bba5af/jboss-logging-3.3.0.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging-annotations/1.2.0.Beta1/2f437f37bb265d9f8f1392823dbca12d2bec06d6/jboss-logging-annotations-1.2.0.Beta1.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-core/4.3.11.Final/536ac0021240d97db99c7d2983067cef1a6f3af5/hibernate-core-4.3.11.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.6.1/5d3ccc056b6f056dbf0dddfdf43894b9065a8f94/dom4j-1.6.1.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hibernate.common/hibernate-commons-annotations/4.0.5.Final/2a581b9edb8168e45060d8bad8b7f46712d2c52c/hibernate-commons-annotations-4.0.5.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.0.Final/5e731d961297e5a07290bfaf3db1fbc8bbbf405a/hibernate-jpa-2.1-api-1.0.0.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.18.1-GA/d9a09f7732226af26bf99f19e2cffe0ae219db5b/javassist-3.18.1-GA.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/1.11.4.RELEASE/c2b1fd4dbf7dff772d6124bb35892759e8bf088e/spring-data-commons-1.11.4.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.5.RELEASE/60625981b837ba93e603d3068d69c6397ecb3ad2/spring-orm-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.5.RELEASE/a75e18322c7b362fe1daa26a245ae672ec0f3138/spring-context-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.5.RELEASE/7395321fe937272d9b781a13985e04ab2dcd6210/spring-tx-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.5.RELEASE/fa992ae40f6fc47117282164e0433b71da385e94/spring-beans-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.16/3a6274f658487d5bfff9af3862beff6da1e7fd52/slf4j-api-1.7.16.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.16/34e48073884704ac987d3d1a1ab9b60e62028a9/jcl-over-slf4j-1.7.16.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.32/734ead0c803525cc9c7f283438101734ca9aac01/tomcat-embed-core-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.0.32/82adf8bd959fc046d55490e6f2ce67297c91d62b/tomcat-embed-el-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-juli/8.0.32/5e664b357710a6c43cad2191404c2a9d0b82cdb3/tomcat-embed-logging-juli-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.0.32/237ca58dac66f438579750169e6cb297ac041c9d/tomcat-embed-websocket-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-validator/5.2.4.Final/fb18766b576aa6632bcfe9a20a023cbd52bf9769/hibernate-validator-5.2.4.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.6.5/65137ebf85056473b40c311f889601646a7612ba/jackson-annotations-2.6.5.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.6.5/334369d7eff497f358b248c171dac0dd62c68f67/jackson-core-2.6.5.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.5.RELEASE/a42bdfb833d0be6c18429aea3fb0fba81f85c6e8/spring-expression-4.2.5.RELEASE.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.1/87c0ea803b69252868d09308b4618f766f135a96/objenesis-2.1.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.5/92353eb144695bba80b31f7bec4f36d871f230ac/logback-classic-1.1.5.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.16/2d5b546c5557dcbf08c3a381d7dc9bd275a602c1/jul-to-slf4j-1.7.16.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.16/c5922f37c8a5e4377cfb543c549f10e73d72ede0/log4j-over-slf4j-1.7.16.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.0.32/71471069cea029dfdce0735337864c7d0a3d9992/tomcat-juli-8.0.32.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/antlr/antlr/2.7.7/83cd2cd674a217ade95a4bb83a8a14f351f48bd0/antlr-2.7.7.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/org.jboss/jandex/1.1.0.Final/e84a2122e76f0b6503be78094ddf2108057ac15f/jandex-1.1.0.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.0.b2/3136ca936f64c9d68529f048c2618bd356bf85c9/xml-apis-1.0.b2.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.1.0.Final/8613ae82954779d518631e05daa73a6a954817d5/validation-api-1.1.0.Final.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/com.fasterxml/classmate/1.1.0/dbbd699a1486ad0f2ed6f5af6cfed66acacb9056/classmate-1.1.0.jar, file:/Users/branden/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.5/16722afde74444716e299bee1f60aec9f6d1f0dc/logback-core-1.1.5.jar]
+2016-03-17 16:25:37.925 ERROR 4432 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@403888ba] to prepare test instance [com.mimetroupe.WillYouBeMimeApplicationTests@56e87ecc]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:183) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:123) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:230) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:249) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:193) [spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:105) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:56) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:64) [gradle-plugins-2.9.jar:2.9]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:50) [gradle-plugins-2.9.jar:2.9]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93) [gradle-messaging-2.9.jar:2.9]
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source) [na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:106) [gradle-plugins-2.9.jar:2.9]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:360) [gradle-messaging-2.9.jar:2.9]
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54) [gradle-base-services-2.9.jar:2.9]
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40) [gradle-base-services-2.9.jar:2.9]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_65]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_65]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_65]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'willYouBeMimeController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.test.SpringApplicationContextLoader.loadContext(SpringApplicationContextLoader.java:98) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116) ~[spring-test-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 45 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.mimetroupe.services.MimeRepository com.mimetroupe.controllers.WillYouBeMimeController.mimeRepository; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mimeRepository': Invocation of init method failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 63 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property userName found for type Mime! Did you mean 'username'?
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:77) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:329) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:309) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:272) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:243) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:76) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:235) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.buildTree(PartTree.java:373) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:353) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:87) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:62) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:100) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:211) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:74) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.<init>(RepositoryFactorySupport.java:416) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:206) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.initAndReturn(RepositoryFactoryBeanSupport.java:251) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:237) ~[spring-data-commons-1.11.4.RELEASE.jar:na]
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:92) ~[spring-data-jpa-1.9.4.RELEASE.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 73 common frames omitted
+
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

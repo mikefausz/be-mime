@@ -1,6 +1,5 @@
 package com.mimetroupe.controllers;
 
-import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
