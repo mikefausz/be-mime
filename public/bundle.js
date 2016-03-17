@@ -13540,7 +13540,7 @@ module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
   // idAttribute: '_id',
   defaults: {
-    username: 'mime555',
+    userName: 'mime555',
     password: '123',
     fullName: 'Mime Mimerson',
     imageUrl: 'https://media.giphy.com/media/lgCvugdD94F6o/giphy.gif',
