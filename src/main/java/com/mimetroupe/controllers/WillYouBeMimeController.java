@@ -1,5 +1,7 @@
 package com.mimetroupe.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.h2.tools.Server;
 import javax.annotation.PostConstruct;
@@ -11,6 +13,8 @@ import java.sql.SQLException;
  */
 @RestController
 public class WillYouBeMimeController {
+
+    @Autowired
 
     Server dbui = null;
 
