@@ -28,4 +28,8 @@ public class WillYouBeMimeApplicationTests {
 		mockMvc = MockMvcBuilders.webAppContextSetup(wap).build();
 	}
 
+    @Test
+    public void contextLoads() {
+    }
+
 }
