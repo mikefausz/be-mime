@@ -6,7 +6,7 @@ module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
   idAttribute: '_id',
   defaults: {
-    username: 'mime555',
+    userName: 'mime555',
     password: '123',
   },
   initialize: function () {},
