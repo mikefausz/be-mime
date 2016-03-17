@@ -5,10 +5,7 @@ import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
 import com.mimetroupe.utilities.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.h2.tools.Server;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -49,7 +46,7 @@ public class WillYouBeMimeController {
 
         if (mimeDb == null) {
             mime.setPassword(PasswordStorage.createHash(mime.getPassword()));
-            return mimeRepository.save(mime); //RUN A TEST TO SEE IF THIS HASHED
+            return mimeRepository.save(mime);
         } else {
             throw new Exception("Mime account already exists");
         }
@@ -69,6 +66,14 @@ public class WillYouBeMimeController {
         return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
     }
 
+    //this method will return one mime
+    //it needs an id sent to it
+    //i think this will look something like /mime/1
+    @RequestMapping(path = "/mine/{id}", method = RequestMethod.GET)
+    public Mime displaySingleMime(@PathVariable("id") int id) {
+        return mimeRepository.findOne(id);
+    }
+
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
@@ -80,6 +85,16 @@ public class WillYouBeMimeController {
         } else {
             return null;
         }
+    }
+
+
+
+
+
+
+    @RequestMapping(path = "/logout", method = RequestMethod.POST)
+    public void logout(HttpSession session) {
+        session.invalidate();
     }
 
 
