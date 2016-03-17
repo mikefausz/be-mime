@@ -1,5 +1,18 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Backbone = require('backbone');
+var LoginModel = require('./loginModel');
+
+module.exports = Backbone.Collection.extend({
+  model: LoginModel,
+  // url: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  url: '/login',
+  initialize: function () {
+    console.log('YOUVE CREATED A LOGIN COLLECTION!');
+  }
+});
+
+},{"./loginModel":3,"backbone":6}],2:[function(require,module,exports){
+var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
@@ -33,12 +46,13 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./loginModel":2,"./templates":9,"backbone":5,"underscore":8}],2:[function(require,module,exports){
+},{"./loginModel":3,"./templates":10,"backbone":6,"underscore":9}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
   tagName: 'ul',
-  urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  urlRoot: '/mime',
   idAttribute: '_id',
   defaults: {
     username: 'mime555',
@@ -47,16 +61,17 @@ module.exports = Backbone.Model.extend({
   initialize: function () {},
 });
 
-},{"backbone":5}],3:[function(require,module,exports){
+},{"backbone":6}],4:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var UserCollection = require('./userCollection');
 var NewUserForm = require('./newUserFormView');
+var LoginCollection = require('./loginCollection');
 var LoginForm = require('./loginFormView');
 
 $(document).ready(function(){
-  // var loginCollection = new LoginCollection();
-  var loginFormMarkup = new LoginForm({collection: null});
+  var loginCollection = new LoginCollection();
+  var loginFormMarkup = new LoginForm({collection: loginCollection});
   $('#login-form').html(loginFormMarkup.render().el);
 
   var userCollection = new UserCollection();
@@ -64,7 +79,7 @@ $(document).ready(function(){
   $('#new-user').html(newUserFormMarkup.render().el);
 });
 
-},{"./loginFormView":1,"./newUserFormView":4,"./userCollection":10,"backbone":5,"jquery":7}],4:[function(require,module,exports){
+},{"./loginCollection":1,"./loginFormView":2,"./newUserFormView":5,"./userCollection":11,"backbone":6,"jquery":8}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -107,7 +122,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":9,"./userModel":11,"backbone":5,"underscore":8}],5:[function(require,module,exports){
+},{"./templates":10,"./userModel":12,"backbone":6,"underscore":9}],6:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2031,7 +2046,7 @@ module.exports = Backbone.View.extend({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":7,"underscore":6}],6:[function(require,module,exports){
+},{"jquery":8,"underscore":7}],7:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3581,7 +3596,7 @@ module.exports = Backbone.View.extend({
   }
 }.call(this));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -13425,9 +13440,9 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],8:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+arguments[4][7][0].apply(exports,arguments)
+},{"dup":7}],10:[function(require,module,exports){
 module.exports = {
   login: [
     `<form role="role">
@@ -13501,27 +13516,29 @@ module.exports = {
   ].join(''),
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var UserModel = require('./userModel');
 
 module.exports = Backbone.Collection.extend({
   model: UserModel,
-  url: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  // url: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  url: '/mime',
   initialize: function () {
     console.log('YOUVE CREATED A MIME COLLECTION!');
   }
 });
 
-},{"./userModel":11,"backbone":5}],11:[function(require,module,exports){
+},{"./userModel":12,"backbone":6}],12:[function(require,module,exports){
 var Backbone = require('backbone');
 var templates = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
   tagName: 'ul',
-  urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
-  idAttribute: '_id',
+  // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
+  urlRoot: '/mime',
+  // idAttribute: '_id',
   defaults: {
     username: 'mime555',
     password: '123',
@@ -13543,4 +13560,4 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./templates":9,"backbone":5,"underscore":8}]},{},[3]);
+},{"./templates":10,"backbone":6,"underscore":9}]},{},[4]);

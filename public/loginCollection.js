@@ -1,11 +1,11 @@
 var Backbone = require('backbone');
-var UserModel = require('./userModel');
+var LoginModel = require('./loginModel');
 
 module.exports = Backbone.Collection.extend({
-  model: UserModel,
+  model: LoginModel,
   // url: 'http://tiny-tiny.herokuapp.com/collections/mime',
-  url: '/mime',
+  url: '/login',
   initialize: function () {
-    console.log('YOUVE CREATED A MIME COLLECTION!');
+    console.log('YOUVE CREATED A LOGIN COLLECTION!');
   }
 });
