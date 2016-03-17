@@ -4,6 +4,7 @@ import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
+import com.mimetroupe.utilities.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by branden on 3/17/16 at 13:20.
@@ -45,36 +47,40 @@ public class WillYouBeMimeController {
     public Mime createMime(@RequestBody Mime mime) throws Exception {
 
         if (mimeRepository.findByUserName(mime.getUserName()) != null) {
-            Mime mimeSaved = mimeRepository.save(mime);
-            return mimeSaved;
+            mime.setPassword(PasswordStorage.createHash(mime.getPassword()));
+            return mimeRepository.save(mime); //RUN A TEST TO SEE IF THIS HASHED
         } else {
             throw new Exception("Mime account already exists");
         }
     }
 
+    @RequestMapping(path = "/mime", method = RequestMethod.GET)
+    public List<Mime> displayAllMimesExceptUser(HttpSession session) {
+        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+
+        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
+
+        for (Mime m : mimeList ) {
+            if (m.getUserName().equals(user.getUserName())) {
+                mimeList.remove(m);
+            }
+        }
+        return mimeList;
+    }
+
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public Mime login(HttpSession session, String userName, String password) {
-        Mime mime =mimeRepository.findByUserName(userName);
+    public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+        Mime mime = mimeRepository.findByUserName(userName);
 
-
-
-//        User user = userRepository.findByName(userName);
-//        if (user == null) {
-//            user = new User(userName, PasswordStorage.createHash(password));
-//            userRepository.save(user);
-//        } else if (!PasswordStorage.verifyPassword(password, user.getPasswordHash())){
-//            throw new Exception("Wrong Password");
-//        }
-//
-//        session.setAttribute("userName", userName);
-
-
-
-
-
-        return null;
+        if (mime != null && PasswordStorage.verifyPassword(password, mime.getPassword())) {
+            session.setAttribute("userName", userName);
+            return mime;
+        } else {
+            return null;
+        }
     }
+
 
 
 }
