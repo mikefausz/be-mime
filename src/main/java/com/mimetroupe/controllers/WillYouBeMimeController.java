@@ -57,16 +57,16 @@ public class WillYouBeMimeController {
 
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
     public List<Mime> displayAllMimesExceptUser(HttpSession session) {
-        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+//        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
-        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
+//        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
 
-        for (Mime m : mimeList ) {
-            if (m.getUserName().equals(user.getUserName())) {
-                mimeList.remove(m);
-            }
-        }
-        return mimeList;
+//        for (Mime m : mimeList ) {
+//            if (m.getUserName().equals(user.getUserName())) {
+//                mimeList.remove(m);
+//            }
+//        }
+        return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
     }
 
 
