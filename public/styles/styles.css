@@ -1,3 +1,7 @@
-#header {
+body {
   background: black;
   color: white; }
+
+.btn-default:hover {
+  background-color: red;
+  border: maroon 1px solid; }
