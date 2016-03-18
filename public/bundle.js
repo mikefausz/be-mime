@@ -30,6 +30,7 @@ module.exports = Backbone.View.extend({
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
+    this.collection.create(this.model);
     this.collection.add(this.model);
     console.log(this.collection);
     this.model = new LoginModel({});
@@ -13504,7 +13505,7 @@ module.exports = {
     </form>`
   ].join(''),
   user: [
-    `<li><%= username %></li>
+    `<li><%= userName %></li>
     <li><%= fullName %></li>
     <li><%= imageUrl %></li>
     <li><%= profileVideoUrl %></li>
