@@ -16,8 +16,11 @@ module.exports = Backbone.View.extend({
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
+    this.model.save();
     this.collection.add(this.model);
     console.log(this.collection);
+    $('#home').toggleClass('hidden');
+    $('#main').toggleClass('hidden');
     this.model = new LoginModel({});
   },
   initialize: function () {

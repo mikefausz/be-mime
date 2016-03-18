@@ -2,7 +2,7 @@ module.exports = {
   login: [
     `<form role="role">
       <div class="form-group">
-        <label for="login-user">Username:</label>
+        <label for="login-user">User name:</label>
         <input type="text" class="form-control" id="login-user">
       </div>
       <div class="form-group">
@@ -16,8 +16,8 @@ module.exports = {
   newUser: [
     `<form role="form">
       <div class="form-group form">
-        <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username">
+        <label for="userName">User name:</label>
+        <input type="text" class="form-control" id="userName">
       </div>
       <div class="form-group">
         <label for="pwd">Password:</label>
@@ -33,7 +33,7 @@ module.exports = {
       </div>
       <div class="form-group">
         <label for="vidUrl">Profile video URL:</label>
-        <input type="text" class="form-control" id="vidUrl">
+        <input type="text" class="form-group" id="vidUrl">
       </div>
       <div class="form-group">
         <label for="age">Age:</label>
@@ -59,7 +59,7 @@ module.exports = {
     </form>`
   ].join(''),
   user: [
-    `<li><%= username %></li>
+    `<li><%= userName %></li>
     <li><%= fullName %></li>
     <li><%= imageUrl %></li>
     <li><%= profileVideoUrl %></li>
