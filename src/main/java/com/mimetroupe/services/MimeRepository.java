@@ -19,12 +19,4 @@ public interface MimeRepository extends CrudRepository<Mime, Integer>{
     @Query(value = "SELECT * FROM Mime WHERE user_name <> ?1", nativeQuery = true)
     List<Mime> findAllWhereUserNameNot(String userName);
 
-
-
-//    @Query("select u from User u where u.emailAddress = ?1")
-//    User findByEmailAddress(String emailAddress);
-
-
-
-
 }
