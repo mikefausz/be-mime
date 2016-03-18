@@ -115,10 +115,8 @@ public class WillYouBeMimeController {
     //returns a list of all the mimes that admimer a specific mime. This is the opposite of /admimerer
     @RequestMapping(path = "/mimesAdmimerers", method = RequestMethod.GET)
     public List<Mime> mimesAdmimerers(HttpSession session) {
-        Mime mime = mimeRepository.fi
-
-
-        return null;
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+        return admimererRepository.findMimeByAdmimerer(mime);
     }
 
 
