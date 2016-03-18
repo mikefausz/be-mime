@@ -1,12 +1,22 @@
-body {
-  background: black;
-  color: white; }
-
 .hidden {
   display: none; }
 
-.col-lg-3, .col-lg-6 {
-  border: red 1px solid; }
+#header {
+  background: black;
+  color: white;
+  height: 100px; }
+  #header form {
+    padding: 18px; }
+  #header input {
+    display: inline-block;
+    width: 200px; }
+  #header button {
+    display: inline; }
+
+.well {
+  background: black;
+  width: 50%;
+  float: right; }
 
 ul {
   display: inline-block;
@@ -16,3 +26,6 @@ ul {
 .btn-default:hover {
   background-color: red;
   border: maroon 1px solid; }
+
+.admimirer img, .admimirer .details {
+  display: inline-block; }

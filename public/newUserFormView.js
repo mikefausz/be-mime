@@ -4,7 +4,7 @@ var templates = require('./templates');
 var UserModel = require('./userModel');
 
 module.exports = Backbone.View.extend({
-
+  className: "well well-lg",
   template: _.template(templates.newUser),
   events: {
     'submit form': 'addUser'

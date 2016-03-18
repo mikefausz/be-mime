@@ -1,6 +1,4 @@
 body {
-  background: black;
-  color: white
 
 }
 
@@ -9,9 +7,29 @@ body {
 }
 
 .col-lg-3, .col-lg-6 {
-  border: red 1px solid;
+  // border: red 1px solid;
 }
 
+#header {
+  background: black;
+  color: white;
+  height: 100px;
+  form {
+    padding: 18px;
+  }
+  input{
+    display: inline-block;
+    width: 200px;
+  }
+  button {
+    display: inline;
+  }
+}
+.well {
+  background: black;
+  width: 50%;
+  float: right;
+}
 ul {
   display: inline-block;
   vertical-align: top;
@@ -21,4 +39,10 @@ ul {
 .btn-default:hover {
   background-color: red;
   border: maroon 1px solid;
+}
+
+.admimirer {
+  img, .details {
+    display: inline-block;
+  }
 }

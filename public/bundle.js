@@ -93,7 +93,7 @@ var templates = require('./templates');
 var UserModel = require('./userModel');
 
 module.exports = Backbone.View.extend({
-
+  className: "well well-lg",
   template: _.template(templates.newUser),
   events: {
     'submit form': 'addUser'
@@ -13450,14 +13450,14 @@ return jQuery;
 },{}],9:[function(require,module,exports){
 module.exports = {
   login: [
-    `<form role="role">
+    `<form class="form-inline" role="role">
       <div class="form-group">
         <input type="text" class="form-control" id="login-user" placeholder="User name">
       </div>
       <div class="form-group">
         <input type="password" class="form-control" id="login-pwd" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-default btn-block">Login</button>
+      <button type="submit" class="btn btn-default">Login</button>
     </form>`
   ].join(''),
 
@@ -13476,7 +13476,7 @@ module.exports = {
         <input type="text" class="form-control" id="imageUrl" placeholder="Image URL">
       </div>
       <div class="form-group">
-        <input type="text" class="form-group" id="vidUrl" placeholder="Profile video URL:">
+        <input type="text" class="form-control" id="vidUrl" placeholder="Profile video URL:">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="age" placeholder="Age">
@@ -13496,19 +13496,6 @@ module.exports = {
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
   ].join(''),
-  // user: [
-  //   userName
-  //   password
-  //   fullName
-  //   imageUrl
-  //   profileVideoUrl: 'https://youtu.be/H-fJC5EN8LY',
-  //   age: 30,
-  //   interests: "Miming, mimes, mime stuff",
-  //   influences: "Marcel Marceau",
-  //   city: 'Charleston',
-  //   state: 'SC',
-  //
-  // ].join(''),
   currentUser: [
     `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
     <h2><%= userName %></h2></div>`

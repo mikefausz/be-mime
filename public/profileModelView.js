@@ -3,12 +3,13 @@ var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  className: 'row',
-  template: _.template(tmpl.currentUser),
+  tagName: 'article',
+  template: _.template(tmpl.user),
   initialize: function () {},
   render: function () {
     var markup = this.template(this.model.toJSON());
     this.$el.html(markup);
     return this;
   }
+
 });
