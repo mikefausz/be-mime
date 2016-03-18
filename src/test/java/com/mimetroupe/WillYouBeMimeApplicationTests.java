@@ -91,6 +91,7 @@ public class WillYouBeMimeApplicationTests {
     }
 
     //testing returning all admimerers for a specific mime
+    // /admimerer GET route method: viewAdmimerer
     @Test
     public void testD() throws  Exception {
         //add another admimerer situation.
@@ -105,6 +106,12 @@ public class WillYouBeMimeApplicationTests {
         List<Mime> admimerer = admimererRepository.findAdmimererByMime(mime);
 
         Assert.assertTrue(admimerer.size() == 2);
+    }
+
+    //testing returning all mimes that admimerer a specific mime
+    @Test
+    public void testE() throws Exception {
+
 
     }
 
