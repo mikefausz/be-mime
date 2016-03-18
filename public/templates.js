@@ -2,7 +2,7 @@ module.exports = {
   login: [
     `<form role="role">
       <div class="form-group">
-        <label for="login-user">Username:</label>
+        <label for="login-user">User name:</label>
         <input type="text" class="form-control" id="login-user">
       </div>
       <div class="form-group">
@@ -16,7 +16,7 @@ module.exports = {
   newUser: [
     `<form role="form">
       <div class="form-group form">
-        <label for="username">Username:</label>
+        <label for="userName">User name:</label>
         <input type="text" class="form-control" id="userName">
       </div>
       <div class="form-group">
@@ -33,7 +33,7 @@ module.exports = {
       </div>
       <div class="form-group">
         <label for="vidUrl">Profile video URL:</label>
-        <input type="text" class="form-control" id="vidUrl">
+        <input type="text" class="form-group" id="vidUrl">
       </div>
       <div class="form-group">
         <label for="age">Age:</label>
@@ -58,15 +58,17 @@ module.exports = {
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
   ].join(''),
-  user: [
-    `<li><%= userName %></li>
-    <li><%= fullName %></li>
-    <li><%= imageUrl %></li>
-    <li><%= profileVideoUrl %></li>
-    <li><%= age %></li>
-    <li><%= interests %></li>
-    <li><%= influences %></li>
-    <li><%= city %></li>
-    <li><%= state %></li>`
+  currentUser: [
+    `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+    <h2><%= userName %></h2></div>`
+  ].join(''),
+  profile: [
+    `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
+    <ul>
+      <li><h3><%= userName %></h3></li>
+      <li><em><%= city %>, <%= state %></em></li>
+      <li><%= age %></li>
+      <li><%= interests %></li>
+    </ul>`
   ].join(''),
 };

@@ -12,7 +12,7 @@ module.exports = Backbone.View.extend({
   addUser: function (event) {
     event.preventDefault();
     this.model.set({
-      userName: this.$el.find('#username').val(),
+      userName: this.$el.find('#userName').val(),
       password: this.$el.find('#pwd').val(),
       fullName: this.$el.find('#fullName').val(),
       imageUrl: this.$el.find('#imageUrl').val(),
