@@ -19,7 +19,7 @@ module.exports = Backbone.Model.extend({
     city: 'Charleston',
     state: 'SC',
   },
-  template: _.template(templates.user),
+  template: _.template(templates.profile),
   initialize: function () {},
   render: function () {
     var markup = this.template(this.model.toJSON());
