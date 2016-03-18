@@ -116,7 +116,4 @@ public class WillYouBeMimeController {
     public void logout(HttpSession session) {
         session.invalidate();
     }
-
-
-
 }
