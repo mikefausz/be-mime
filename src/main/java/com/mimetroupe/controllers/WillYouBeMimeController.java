@@ -46,7 +46,7 @@ public class WillYouBeMimeController {
     @RequestMapping(path = "/mime", method = RequestMethod.POST)
     public Mime createMime(@RequestBody Mime mime) throws Exception {
 
-        if (mimeRepository.findByUserName(mime.getUserName()) != null) {
+        if (mimeRepository.findByUserName(mime.getUserName()) == null) {
             mime.setPassword(PasswordStorage.createHash(mime.getPassword()));
             return mimeRepository.save(mime); //RUN A TEST TO SEE IF THIS HASHED
         } else {
