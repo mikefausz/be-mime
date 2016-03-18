@@ -49,8 +49,6 @@ public class WillYouBeMimeApplicationTests {
 						.content(json)
 						.contentType("application/json")
 		);
-
-
 		Assert.assertTrue(mimeRepository.count() == 1);
 	}
 
@@ -59,7 +57,6 @@ public class WillYouBeMimeApplicationTests {
 		mimeRepository.save(new Mime("mimeman2", PasswordStorage.createHash("pass2"), "Mimer Mime", 30, "url2", "vid2", "miming", "mimelandia", "Mimeland", "chapland"));
         mimeRepository.save(new Mime("mimeman3", PasswordStorage.createHash("pass3"), "Mime Mimerson", 34, "url3", "vid3", "miming", "mimelandia", "Mimeland", "chapland"));
         mimeRepository.save(new Mime("mimeman4", PasswordStorage.createHash("pass4"), "Justa Mime", 50, "url4", "vid4", "miming", "mimelandia", "Mimeland", "chapland"));
-
 
 		//should return just one mime out of the 2
 		Assert.assertTrue(mimeRepository.findAllWhereUserNameNot("mimeman2").size() == 2);

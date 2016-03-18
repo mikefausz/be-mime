@@ -52,8 +52,9 @@ public class WillYouBeMimeController {
         }
     }
 
+    //return all the mimes except the currently logged in mime
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
-    public List<Mime> displayAllMimesExceptUser(HttpSession session) {
+    public List<Mime> displayAllMimesExceptUser(HttpSession session) throws Exception {
 //        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
 //        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
@@ -63,7 +64,11 @@ public class WillYouBeMimeController {
 //                mimeList.remove(m);
 //            }
 //        }
-        return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
+        if (!session.isNew()) {
+            return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
+        } else {
+            throw new Exception("You are a sneaky Mime, and sneaky Mimes do not get Admimerers");
+        }
     }
 
     //this method will return one mime
@@ -75,6 +80,7 @@ public class WillYouBeMimeController {
     }
 
 
+    //login route. If something goes wrong it will return null, which FE can then handle.
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
         Mime mime = mimeRepository.findByUserName(userName);
@@ -88,7 +94,21 @@ public class WillYouBeMimeController {
     }
 
 
+    @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
+    public void addAdmimerer(HttpSession session) {
 
+
+    }
+
+
+    @RequestMapping(path = "/admimerer", method = RequestMethod.GET)
+    public List<Mime> viewAdmimerers(HttpSession session) {
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+
+        //return admimererRepository.findByMime(mime);
+
+        return null;
+    }
 
 
 
