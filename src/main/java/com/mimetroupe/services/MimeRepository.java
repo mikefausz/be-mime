@@ -16,8 +16,8 @@ import java.util.List;
 public interface MimeRepository extends CrudRepository<Mime, Integer>{
     Mime findByUserName(String userName);
 
-//    @Query("SELECT m FROM Mime m WHERE u.userName NOT ?1 ")
-//    List<Mime> findAllWhereUserNameNot(String userName);
+    @Query(value = "SELECT * FROM Mime WHERE user_name <> ?1", nativeQuery = true)
+    List<Mime> findAllWhereUserNameNot(String userName);
 
 
 

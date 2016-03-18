@@ -1,15 +1,11 @@
 package com.mimetroupe.controllers;
 
-import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
 import com.mimetroupe.utilities.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.h2.tools.Server;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -46,29 +42,45 @@ public class WillYouBeMimeController {
     @RequestMapping(path = "/mime", method = RequestMethod.POST)
     public Mime createMime(@RequestBody Mime mime) throws Exception {
 
-        if (mimeRepository.findByUserName(mime.getUserName()) != null) {
+        Mime mimeDb = mimeRepository.findByUserName(mime.getUserName());
+
+        if (mimeDb == null) {
             mime.setPassword(PasswordStorage.createHash(mime.getPassword()));
-            return mimeRepository.save(mime); //RUN A TEST TO SEE IF THIS HASHED
+            return mimeRepository.save(mime);
         } else {
             throw new Exception("Mime account already exists");
         }
     }
 
+    //return all the mimes except the currently logged in mime
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
-    public List<Mime> displayAllMimesExceptUser(HttpSession session) {
-        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+    public List<Mime> displayAllMimesExceptUser(HttpSession session) throws Exception {
+//        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
-        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
+//        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
 
-        for (Mime m : mimeList ) {
-            if (m.getUserName().equals(user.getUserName())) {
-                mimeList.remove(m);
-            }
+//        for (Mime m : mimeList ) {
+//            if (m.getUserName().equals(user.getUserName())) {
+//                mimeList.remove(m);
+//            }
+//        }
+        if (!session.isNew()) {
+            return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
+        } else {
+            throw new Exception("You are a sneaky Mime, and sneaky Mimes do not get Admimerers");
         }
-        return mimeList;
+    }
+
+    //this method will return one mime
+    //it needs an id sent to it
+    //i think this will look something like /mime/1
+    @RequestMapping(path = "/mine/{id}", method = RequestMethod.GET)
+    public Mime displaySingleMime(@PathVariable("id") int id) {
+        return mimeRepository.findOne(id);
     }
 
 
+    //login route. If something goes wrong it will return null, which FE can then handle.
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
         Mime mime = mimeRepository.findByUserName(userName);
@@ -79,6 +91,30 @@ public class WillYouBeMimeController {
         } else {
             return null;
         }
+    }
+
+
+    @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
+    public void addAdmimerer(HttpSession session) {
+
+
+    }
+
+
+    @RequestMapping(path = "/admimerer", method = RequestMethod.GET)
+    public List<Mime> viewAdmimerers(HttpSession session) {
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+
+        //return admimererRepository.findByMime(mime);
+
+        return null;
+    }
+
+
+
+    @RequestMapping(path = "/logout", method = RequestMethod.POST)
+    public void logout(HttpSession session) {
+        session.invalidate();
     }
 
 
