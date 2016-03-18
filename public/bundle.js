@@ -13505,6 +13505,19 @@ module.exports = {
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
   ].join(''),
+  // user: [
+  //   userName
+  //   password
+  //   fullName
+  //   imageUrl
+  //   profileVideoUrl: 'https://youtu.be/H-fJC5EN8LY',
+  //   age: 30,
+  //   interests: "Miming, mimes, mime stuff",
+  //   influences: "Marcel Marceau",
+  //   city: 'Charleston',
+  //   state: 'SC',
+  //
+  // ].join(''),
   currentUser: [
     `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
     <h2><%= userName %></h2></div>`
@@ -13555,7 +13568,7 @@ module.exports = Backbone.Model.extend({
     city: 'Charleston',
     state: 'SC',
   },
-  template: _.template(templates.user),
+  template: _.template(templates.profile),
   initialize: function () {},
   render: function () {
     var markup = this.template(this.model.toJSON());
