@@ -6,8 +6,10 @@ import com.mimetroupe.services.MimeRepository;
 import com.mimetroupe.utilities.PasswordStorage;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -20,6 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WillYouBeMimeApplication.class)
 @WebAppConfiguration
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) //have to keep tests in alpha order
 public class WillYouBeMimeApplicationTests {
 
 	@Autowired
@@ -32,7 +35,7 @@ public class WillYouBeMimeApplicationTests {
 
 	@Before
 	public void before() {
-        mimeRepository.deleteAll();
+        //mimeRepository.deleteAll();
 		mockMvc = MockMvcBuilders.webAppContextSetup(wap).build();
 	}
 
@@ -59,7 +62,7 @@ public class WillYouBeMimeApplicationTests {
         mimeRepository.save(new Mime("mimeman4", PasswordStorage.createHash("pass4"), "Justa Mime", 50, "url4", "vid4", "miming", "mimelandia", "Mimeland", "chapland"));
 
 		//should return just one mime out of the 2
-		Assert.assertTrue(mimeRepository.findAllWhereUserNameNot("mimeman2").size() == 2);
+		Assert.assertTrue(mimeRepository.findAllWhereUserNameNot("mimeman2").size() == 3);
 
 
 	}
