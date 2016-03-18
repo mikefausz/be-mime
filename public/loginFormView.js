@@ -14,14 +14,17 @@ module.exports = Backbone.View.extend({
     event.preventDefault();
     $('#home').toggleClass('hidden');
     $('#main').toggleClass('hidden');
+    console.log(this.$el.find('#login-user').val());
+    console.log(this.$el.find('#login-pwd').val());
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
-    this.model.save();
+    this.collection.create(this.model.toJSON());
     this.collection.add(this.model);
-    console.log(this.collection);
+    console.log(this.model);
+    console.log(this.model.toJSON());
     this.model = new LoginModel({});
   },
   initialize: function () {
