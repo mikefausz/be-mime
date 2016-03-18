@@ -58,15 +58,17 @@ module.exports = {
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
   ].join(''),
-  user: [
-    `<li><%= userName %></li>
-    <li><%= fullName %></li>
-    <li><%= imageUrl %></li>
-    <li><%= profileVideoUrl %></li>
-    <li><%= age %></li>
-    <li><%= interests %></li>
-    <li><%= influences %></li>
-    <li><%= city %></li>
-    <li><%= state %></li>`
+  currentUser: [
+    `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+    <h2><%= userName %></h2></div>`
+  ].join(''),
+  profile: [
+    `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
+    <ul>
+      <li><h3><%= userName %></h3></li>
+      <li><em><%= city %>, <%= state %></em></li>
+      <li><%= age %></li>
+      <li><%= interests %></li>
+    </ul>`
   ].join(''),
 };

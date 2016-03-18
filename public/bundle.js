@@ -13,6 +13,7 @@ module.exports = Backbone.Collection.extend({
 
 },{"./loginModel":3,"backbone":6}],2:[function(require,module,exports){
 var Backbone = require('backbone');
+var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
@@ -21,10 +22,12 @@ module.exports = Backbone.View.extend({
 
   template: _.template(templates.login),
   events: {
-    'submit form': 'addUser'
+    'submit form': 'loginUser'
   },
   loginUser: function (event) {
     event.preventDefault();
+    $('#home').toggleClass('hidden');
+    $('#main').toggleClass('hidden');
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
@@ -33,8 +36,6 @@ module.exports = Backbone.View.extend({
     this.model.save();
     this.collection.add(this.model);
     console.log(this.collection);
-    $('#home').toggleClass('hidden');
-    $('#main').toggleClass('hidden');
     this.model = new LoginModel({});
   },
   initialize: function () {
@@ -49,7 +50,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./loginModel":3,"./templates":9,"backbone":6,"underscore":8}],3:[function(require,module,exports){
+},{"./loginModel":3,"./templates":9,"backbone":6,"jquery":7,"underscore":8}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -13504,16 +13505,18 @@ module.exports = {
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
   ].join(''),
-  user: [
-    `<li><%= userName %></li>
-    <li><%= fullName %></li>
-    <li><%= imageUrl %></li>
-    <li><%= profileVideoUrl %></li>
-    <li><%= age %></li>
-    <li><%= interests %></li>
-    <li><%= influences %></li>
-    <li><%= city %></li>
-    <li><%= state %></li>`
+  currentUser: [
+    `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+    <h2><%= userName %></h2></div>`
+  ].join(''),
+  profile: [
+    `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
+    <ul>
+      <li><h3><%= userName %></h3></li>
+      <li><em><%= city %>, <%= state %></em></li>
+      <li><%= age %></li>
+      <li><%= interests %></li>
+    </ul>`
   ].join(''),
 };
 
