@@ -28,14 +28,17 @@ module.exports = Backbone.View.extend({
     event.preventDefault();
     $('#home').toggleClass('hidden');
     $('#main').toggleClass('hidden');
+    console.log(this.$el.find('#login-user').val());
+    console.log(this.$el.find('#login-pwd').val());
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
-    this.model.save();
+    this.collection.create(this.model.toJSON());
     this.collection.add(this.model);
-    console.log(this.collection);
+    console.log(this.model);
+    console.log(this.model.toJSON());
     this.model = new LoginModel({});
   },
   initialize: function () {
@@ -13449,12 +13452,10 @@ module.exports = {
   login: [
     `<form role="role">
       <div class="form-group">
-        <label for="login-user">User name:</label>
-        <input type="text" class="form-control" id="login-user">
+        <input type="text" class="form-control" id="login-user" placeholder="User name">
       </div>
       <div class="form-group">
-        <label for="login-user">Password:</label>
-        <input type="password" class="form-control" id="login-user">
+        <input type="password" class="form-control" id="login-pwd" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-default btn-block">Login</button>
     </form>`
@@ -13463,44 +13464,34 @@ module.exports = {
   newUser: [
     `<form role="form">
       <div class="form-group form">
-        <label for="userName">User name:</label>
-        <input type="text" class="form-control" id="userName">
+        <input type="text" class="form-control" id="userName" placeholder="User name">
       </div>
       <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
+        <input type="password" class="form-control" id="pwd" placeholder="Password">
       </div>
       <div class="form-group">
-        <label for="fullName">Full name:</label>
-        <input type="text" class="form-control" id="fullName">
+        <input type="text" class="form-control" id="fullName" placeholder="Full name">
       </div>
       <div class="form-group">
-        <label for="imageUrl">Image URL:</label>
-        <input type="text" class="form-control" id="imageUrl">
+        <input type="text" class="form-control" id="imageUrl" placeholder="Image URL">
       </div>
       <div class="form-group">
-        <label for="vidUrl">Profile video URL:</label>
-        <input type="text" class="form-group" id="vidUrl">
+        <input type="text" class="form-group" id="vidUrl" placeholder="Profile video URL:">
       </div>
       <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="text" class="form-control" id="age">
+        <input type="text" class="form-control" id="age" placeholder="Age">
       </div>
       <div class="form-group">
-        <label for="interests">Interests:</label>
-        <input type="text" class="form-control" id="interests">
+        <input type="text" class="form-control" id="interests" placeholder="Interests">
       </div>
       <div class="form-group">
-        <label for="influences">Influences:</label>
-        <input type="text" class="form-control" id="influences">
+        <input type="text" class="form-control" id="influences" placeholder="Influences">
       </div>
       <div class="form-group">
-        <label for="city">City:</label>
-        <input type="text" class="form-control" id="city">
+        <input type="text" class="form-control" id="city" placeholder="City">
       </div>
       <div class="form-group">
-        <label for="state">State:</label>
-        <input type="text" class="form-control" id="state">
+        <input type="text" class="form-control" id="state" placeholder="State">
       </div>
       <button type="submit" class="btn btn-default btn-block">Submit</button>
     </form>`
