@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -83,11 +84,13 @@ public class WillYouBeMimeController {
 
     //login route. If something goes wrong it will return null, which FE can then handle.
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
-        Mime mime = mimeRepository.findByUserName(userName);
+    public Mime login(HttpSession session, @RequestBody HashMap data) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
 
-        if (mime != null && PasswordStorage.verifyPassword(password, mime.getPassword())) {
-            session.setAttribute("userName", userName);
+
+        Mime mime = mimeRepository.findByUserName((String) data.get("userName"));
+
+        if (mime != null && PasswordStorage.verifyPassword((String) data.get("password"), mime.getPassword())) {
+            session.setAttribute("userName", mime.getUserName());
             return mime;
         } else {
             return null;
