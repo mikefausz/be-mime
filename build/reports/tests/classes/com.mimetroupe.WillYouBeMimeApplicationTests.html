@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">5</div>
+<div class="counter">6</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.727s</div>
+<div class="counter">1.772s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,27 +79,32 @@
 </thead>
 <tr>
 <td class="success">testA</td>
-<td>1.332s</td>
+<td>1.183s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testB</td>
-<td>0.296s</td>
+<td>0.429s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testC</td>
-<td>0.041s</td>
+<td>0.048s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testD</td>
-<td>0.036s</td>
+<td>0.044s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testE</td>
-<td>0.022s</td>
+<td>0.020s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testX</td>
+<td>0.048s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -107,29 +112,29 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:23:02.964 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:02.974 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-17:23:02.982 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-17:23:02.998 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.mimetroupe.WillYouBeMimeApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
-17:23:03.029 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@4c6a138c declaringClass = 'com.mimetroupe.WillYouBeMimeApplicationTests', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
-17:23:03.034 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTests-context.xml] does not exist
-17:23:03.034 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTestsContext.groovy] does not exist
-17:23:03.034 [Test worker] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-17:23:03.036 [Test worker] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.039 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.mimetroupe.WillYouBeMimeApplicationTests]: using defaults.
-17:23:03.048 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-17:23:03.082 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@23b89339, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@61e0fa43, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2c369051, org.springframework.test.context.support.DirtiesContextTestExecutionListener@111d3f7a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@765b473b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@108f9951]
-17:23:03.086 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.087 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.088 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.088 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.092 [Test worker] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@300f89cd testClass = WillYouBeMimeApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@511e4364 testClass = WillYouBeMimeApplicationTests, locations = '{}', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
-17:23:03.094 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.094 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
-17:23:03.174 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-17:23:03.175 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-17:23:03.176 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-17:23:03.178 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+<pre>18:29:50.830 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.839 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+18:29:50.845 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+18:29:50.863 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.mimetroupe.WillYouBeMimeApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+18:29:50.893 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@4c6a138c declaringClass = 'com.mimetroupe.WillYouBeMimeApplicationTests', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+18:29:50.897 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTests-context.xml] does not exist
+18:29:50.898 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: class path resource [com/mimetroupe/WillYouBeMimeApplicationTestsContext.groovy] does not exist
+18:29:50.898 [Test worker] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.mimetroupe.WillYouBeMimeApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+18:29:50.900 [Test worker] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.904 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.mimetroupe.WillYouBeMimeApplicationTests]: using defaults.
+18:29:50.915 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+18:29:50.944 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@23b89339, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@61e0fa43, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2c369051, org.springframework.test.context.support.DirtiesContextTestExecutionListener@111d3f7a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@765b473b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@108f9951]
+18:29:50.947 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.948 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.949 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.949 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.952 [Test worker] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@300f89cd testClass = WillYouBeMimeApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@511e4364 testClass = WillYouBeMimeApplicationTests, locations = '{}', classes = '{class com.mimetroupe.WillYouBeMimeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+18:29:50.953 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:50.953 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mimetroupe.WillYouBeMimeApplicationTests]
+18:29:51.034 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+18:29:51.036 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+18:29:51.036 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+18:29:51.038 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -139,63 +144,68 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.3.3.RELEASE)
 
-2016-03-19 17:23:03.803  INFO 2479 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Starting WillYouBeMimeApplicationTests on OTR.local with PID 2479 (/Users/branden/JavaProjects/willYouBeMime/build/classes/test started by branden in /Users/branden/JavaProjects/willYouBeMime)
-2016-03-19 17:23:03.804  INFO 2479 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : No active profile set, falling back to default profiles: default
-2016-03-19 17:23:03.869  INFO 2479 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@60f26cc4: startup date [Sat Mar 19 17:23:03 EDT 2016]; root of context hierarchy
-2016-03-19 17:23:04.927  INFO 2479 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
-2016-03-19 17:23:05.622  INFO 2479 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$74dabe04] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2016-03-19 17:23:06.114  INFO 2479 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
-2016-03-19 17:23:06.150  INFO 2479 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2016-03-19 18:29:51.355  INFO 3348 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Starting WillYouBeMimeApplicationTests on OTR.local with PID 3348 (/Users/branden/JavaProjects/willYouBeMime/build/classes/test started by branden in /Users/branden/JavaProjects/willYouBeMime)
+2016-03-19 18:29:51.356  INFO 3348 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : No active profile set, falling back to default profiles: default
+2016-03-19 18:29:51.455  INFO 3348 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@5434921c: startup date [Sat Mar 19 18:29:51 EDT 2016]; root of context hierarchy
+2016-03-19 18:29:52.538  INFO 3348 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-03-19 18:29:53.234  INFO 3348 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d2dd4fcf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-03-19 18:29:53.759  INFO 3348 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-03-19 18:29:53.792  INFO 3348 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2016-03-19 17:23:06.265  INFO 2479 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
-2016-03-19 17:23:06.266  INFO 2479 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2016-03-19 17:23:06.270  INFO 2479 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
-2016-03-19 17:23:06.548  INFO 2479 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
-2016-03-19 17:23:06.919  INFO 2479 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2016-03-19 17:23:07.113  INFO 2479 --- [    Test worker] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
-2016-03-19 17:23:07.575  INFO 2479 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
-2016-03-19 17:23:07.575  INFO 2479 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
-2016-03-19 17:23:07.578  INFO 2479 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
-2016-03-19 17:23:07.589  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-19 17:23:07.591  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-19 17:23:07.593  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-19 17:23:07.595  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-19 17:23:07.598  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
-2016-03-19 17:23:07.601  INFO 2479 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
-2016-03-19 17:23:07.643  INFO 2479 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
-2016-03-19 17:23:09.040  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@60f26cc4: startup date [Sat Mar 19 17:23:03 EDT 2016]; root of context hierarchy
-2016-03-19 17:23:09.178  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.addAdmimerer(javax.servlet.http.HttpSession,com.mimetroupe.entities.Mime)
-2016-03-19 17:23:09.181  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer/{id}],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.addAdmimererSingle(javax.servlet.http.HttpSession,com.mimetroupe.entities.Mime,java.lang.Integer)
-2016-03-19 17:23:09.182  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.viewAdmimerers(javax.servlet.http.HttpSession)
-2016-03-19 17:23:09.184  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mimesAdmimerers],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.mimesAdmimerers(javax.servlet.http.HttpSession)
-2016-03-19 17:23:09.185  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mimeMatches],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.mimeMatches(javax.servlet.http.HttpSession)
-2016-03-19 17:23:09.186  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[POST]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.createMime(com.mimetroupe.entities.Mime) throws java.lang.Exception
-2016-03-19 17:23:09.186  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.displayAllMimesExceptUser(javax.servlet.http.HttpSession) throws java.lang.Exception
-2016-03-19 17:23:09.186  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mine/{id}],methods=[GET]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.displaySingleMime(int)
-2016-03-19 17:23:09.187  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/login],methods=[POST]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.login(javax.servlet.http.HttpSession,java.util.HashMap) throws com.mimetroupe.utilities.PasswordStorage$InvalidHashException,com.mimetroupe.utilities.PasswordStorage$CannotPerformOperationException
-2016-03-19 17:23:09.187  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/logout],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.logout(javax.servlet.http.HttpSession)
-2016-03-19 17:23:09.192  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2016-03-19 17:23:09.193  INFO 2479 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2016-03-19 17:23:09.248  INFO 2479 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-19 17:23:09.249  INFO 2479 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-19 17:23:09.346  INFO 2479 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2016-03-19 17:23:09.834  INFO 2479 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Started WillYouBeMimeApplicationTests in 6.642 seconds (JVM running for 7.827)
-2016-03-19 17:23:09.867  INFO 2479 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-19 17:23:09.867  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-19 17:23:09.888  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 20 ms
-2016-03-19 17:23:11.191  INFO 2479 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-19 17:23:11.191  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-19 17:23:11.194  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-2016-03-19 17:23:11.490  INFO 2479 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-19 17:23:11.490  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-19 17:23:11.494  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
-2016-03-19 17:23:11.532  INFO 2479 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-19 17:23:11.533  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-19 17:23:11.536  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-2016-03-19 17:23:11.571  INFO 2479 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
-2016-03-19 17:23:11.572  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2016-03-19 17:23:11.575  INFO 2479 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+2016-03-19 18:29:53.895  INFO 3348 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-03-19 18:29:53.897  INFO 3348 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-03-19 18:29:53.901  INFO 3348 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-03-19 18:29:54.160  INFO 3348 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-03-19 18:29:54.521  INFO 3348 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2016-03-19 18:29:54.726  INFO 3348 --- [    Test worker] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-03-19 18:29:55.081  INFO 3348 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-03-19 18:29:55.082  INFO 3348 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-03-19 18:29:55.084  INFO 3348 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-03-19 18:29:55.094  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-19 18:29:55.095  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-19 18:29:55.096  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-19 18:29:55.098  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-19 18:29:55.099  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: admimerer
+2016-03-19 18:29:55.100  INFO 3348 --- [    Test worker] java.sql.DatabaseMetaData                : HHH000262: Table not found: mime
+2016-03-19 18:29:55.133  INFO 3348 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-03-19 18:29:56.266  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@5434921c: startup date [Sat Mar 19 18:29:51 EDT 2016]; root of context hierarchy
+2016-03-19 18:29:56.357  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[POST]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.createMime(com.mimetroupe.entities.Mime) throws java.lang.Exception
+2016-03-19 18:29:56.360  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.displayAllMimesExceptUser(javax.servlet.http.HttpSession) throws java.lang.Exception
+2016-03-19 18:29:56.360  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mine/{id}],methods=[GET]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.displaySingleMime(int)
+2016-03-19 18:29:56.361  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[PUT]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.editProfile(com.mimetroupe.entities.Mime)
+2016-03-19 18:29:56.361  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mime],methods=[DELETE]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.deleteProfile(com.mimetroupe.entities.Mime,javax.servlet.http.HttpSession)
+2016-03-19 18:29:56.362  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.addAdmimerer(javax.servlet.http.HttpSession,com.mimetroupe.entities.Mime)
+2016-03-19 18:29:56.362  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer/{id}],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.addAdmimererSingle(javax.servlet.http.HttpSession,com.mimetroupe.entities.Mime,java.lang.Integer)
+2016-03-19 18:29:56.363  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/admimerer],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.viewAdmimerers(javax.servlet.http.HttpSession)
+2016-03-19 18:29:56.363  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mimesAdmimerers],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.mimesAdmimerers(javax.servlet.http.HttpSession)
+2016-03-19 18:29:56.364  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/mimeMatches],methods=[GET]}&quot; onto public java.util.List&lt;com.mimetroupe.entities.Mime&gt; com.mimetroupe.controllers.WillYouBeMimeController.mimeMatches(javax.servlet.http.HttpSession)
+2016-03-19 18:29:56.364  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/login],methods=[POST]}&quot; onto public com.mimetroupe.entities.Mime com.mimetroupe.controllers.WillYouBeMimeController.login(javax.servlet.http.HttpSession,java.util.HashMap) throws com.mimetroupe.utilities.PasswordStorage$InvalidHashException,com.mimetroupe.utilities.PasswordStorage$CannotPerformOperationException
+2016-03-19 18:29:56.364  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/logout],methods=[POST]}&quot; onto public void com.mimetroupe.controllers.WillYouBeMimeController.logout(javax.servlet.http.HttpSession)
+2016-03-19 18:29:56.371  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-03-19 18:29:56.372  INFO 3348 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-03-19 18:29:56.417  INFO 3348 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-03-19 18:29:56.417  INFO 3348 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-03-19 18:29:56.482  INFO 3348 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-03-19 18:29:56.891  INFO 3348 --- [    Test worker] c.m.WillYouBeMimeApplicationTests        : Started WillYouBeMimeApplicationTests in 5.841 seconds (JVM running for 7.052)
+2016-03-19 18:29:56.926  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:56.927  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:56.947  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 20 ms
+2016-03-19 18:29:58.096  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:58.097  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:58.102  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 5 ms
+2016-03-19 18:29:58.528  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:58.528  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:58.534  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 6 ms
+2016-03-19 18:29:58.579  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:58.579  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:58.585  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 6 ms
+2016-03-19 18:29:58.623  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:58.623  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:58.626  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 2 ms
+2016-03-19 18:29:58.644  INFO 3348 --- [    Test worker] o.s.b.test.SpringBootMockServletContext  : Initializing Spring FrameworkServlet ''
+2016-03-19 18:29:58.645  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-03-19 18:29:58.650  INFO 3348 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 5 ms
 </pre>
 </span>
 </div>
@@ -207,7 +217,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.9</a> at Mar 19, 2016 5:23:11 PM</p>
+<a href="http://www.gradle.org">Gradle 2.9</a> at Mar 19, 2016 6:29:58 PM</p>
 </div>
 </div>
 </body>

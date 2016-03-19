@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,16 +58,7 @@ public class WillYouBeMimeController {
     //return all the mimes except the currently logged in mime
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
     public List<Mime> displayAllMimesExceptUser(HttpSession session) throws Exception {
-//        Mime user = mimeRepository.findByUserName((String) session.getAttribute("userName"));
-
-//        List<Mime> mimeList = (List<Mime>) mimeRepository.findAll();
-
-//        for (Mime m : mimeList ) {
-//            if (m.getUserName().equals(user.getUserName())) {
-//                mimeList.remove(m);
-//            }
-//        }
-        if (!session.isNew()) {
+        if (session.getAttribute("userName") != null) {
             return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
         } else {
             throw new Exception("You are a sneaky Mime, and sneaky Mimes do not get Admimerers");
@@ -80,6 +72,25 @@ public class WillYouBeMimeController {
     public Mime displaySingleMime(@PathVariable("id") int id) {
         return mimeRepository.findOne(id);
     }
+
+
+    //edits currently logged in mime account
+    @RequestMapping(path = "/mime", method = RequestMethod.PUT)
+    public void editProfile(@RequestBody Mime mime) {
+        mimeRepository.save(mime);
+    }
+
+    //deletes currently logged in mime account
+    @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
+    public void deleteProfile(@RequestBody Mime mime, HttpSession session) {
+
+//        admimererRepository.deleteCascade(mime.getId());
+
+        mimeRepository.delete(mime);
+        session.invalidate();
+    }
+
+
 
 
     //login route. If something goes wrong it will return null, which FE can then handle.
@@ -123,15 +134,24 @@ public class WillYouBeMimeController {
     @RequestMapping(path = "/admimerer", method = RequestMethod.GET)
     public List<Mime> viewAdmimerers(HttpSession session) {
         Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
-
-        return admimererRepository.findAdmimererByMime(mime);
+        List<Admimerer> admimerers = admimererRepository.findByMime(mime);
+        List<Mime> mimes = new ArrayList<>();
+        for (Admimerer a : admimerers) {
+            mimes.add(a.getAdmimerer());
+        }
+        return mimes;
     }
 
     //returns a list of all the mimes that admimer a specific mime. This is the opposite of /admimerer
     @RequestMapping(path = "/mimesAdmimerers", method = RequestMethod.GET)
     public List<Mime> mimesAdmimerers(HttpSession session) {
         Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
-        return admimererRepository.findMimeByAdmimerer(mime);
+        List<Admimerer> admimerers = admimererRepository.findByAdmimerer(mime);
+        List<Mime> mimes = new ArrayList<>();
+        for (Admimerer a : admimerers) {
+            mimes.add(a.getMime());
+        }
+        return mimes;
     }
 
     @RequestMapping(path = "/mimeMatches", method = RequestMethod.GET)
