@@ -101,14 +101,18 @@ public class WillYouBeMimeController {
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
     public void addAdmimerer(HttpSession session,@RequestBody Mime mime) {
+
+        Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
         Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
-        admimererRepository.save(new Admimerer(mimeUser, mime));
+        admimererRepository.save(new Admimerer(mimeUser, mimeFromPage));
     }
 
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer/{id}", method = RequestMethod.POST)
-    public void addAdmimererSingle(HttpSession session,@RequestBody Mime mime, @PathVariable("id") int id) {
+    public void addAdmimererSingle(HttpSession session,@RequestBody Mime mime, @PathVariable("id") Integer id) {
+
+        Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
         Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
         admimererRepository.save(new Admimerer(mimeUser, mime));
