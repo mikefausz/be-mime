@@ -118,13 +118,13 @@ public class WillYouBeMimeApplicationTests {
     }
 
 	//testing deleting a mime account
-	@Test
-	public void testZ() throws Exception {
-		mockMvc.perform(
-				MockMvcRequestBuilders.delete("/user/1")
-		);
-
-		Assert.assertTrue(mimeRepository.count() == 3);
-	}
+//	@Test
+//	public void testZ() throws Exception {
+//		mockMvc.perform(
+//				MockMvcRequestBuilders.delete("/user/1")
+//		);
+//
+//		Assert.assertTrue(mimeRepository.count() == 3);
+//	}
 
 }

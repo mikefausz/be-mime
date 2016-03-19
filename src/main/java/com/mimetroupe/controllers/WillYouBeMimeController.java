@@ -73,6 +73,18 @@ public class WillYouBeMimeController {
         }
     }
 
+    //edits currently logged in mime account
+    @RequestMapping(path = "/mime{id}", method = RequestMethod.PUT)
+    public void editProfile(@RequestBody Mime mime, @PathVariable("id") int id) {
+        mimeRepository.save(mime);
+    }
+
+    //deletes currently logged in mime account
+    @RequestMapping(path = "/mime{id}", method = RequestMethod.DELETE)
+    public void deleteProfile(@PathVariable("id") int id) {
+        mimeRepository.delete(id);
+    }
+
     //this method will return one mime
     //it needs an id sent to it
     //i think this will look something like /mime/1
@@ -122,8 +134,7 @@ public class WillYouBeMimeController {
         return admimererRepository.findMimeByAdmimerer(mime);
     }
 
-
-
+    //logs out the current user
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
     public void logout(HttpSession session) {
         session.invalidate();
