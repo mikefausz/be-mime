@@ -70,14 +70,20 @@ module.exports = Backbone.View.extend({
   el: '#current-user-prof',
   template: _.template(tmpl.currentUser),
   events: {
-    'click button': 'logoutUser'
+    'click button': 'logoutUser',
+    'click .glyphicon-remove-sign': 'deleteUser'
   },
   logoutUser: function() {
-    console.log(this.model);
-    var logout = new LogoutModel(this.model);
-    window.log = logout;
-    delete logout.attributes.id;
+    var logout = new LogoutModel();
     logout.save();
+    $('#main').addClass('hidden');
+    $('#home').removeClass('hidden');
+    $('#current-user-prof').html('');
+    $('#profile-list').html('');
+    $('#admimerer-list').html('');
+  },
+  deleteUser: function() {
+    this.model.destroy();
   },
   initialize: function () {
     this.render();
@@ -126,6 +132,7 @@ module.exports = Backbone.View.extend({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
+    console.log("login user " + this.model.attributes.userName);
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
@@ -172,10 +179,10 @@ module.exports = Backbone.Model.extend({
   tagName: 'ul',
   urlRoot: '/login',
   idAttribute: '_id',
-  defaults: {
-    userName: 'mime555',
-    password: '123',
-  },
+  // defaults: {
+  //   userName: ,
+  //   password: ,
+  // },
   initialize: function () {},
 });
 
@@ -13599,11 +13606,12 @@ module.exports = Backbone.View.extend({
   tagName: 'article',
   template: _.template(tmpl.profile),
   events: {
-    'click button': 'admimerProf'
+    'click .glyphicon-heart': 'admimerProf'
   },
   admimerProf: function() {
     // event.preventDefault();
     // console.log('this', this);
+    console.log("liked " + this.model.attributes.userName);
     var obj = this.model.attributes;
     // console.log(obj);
     delete obj.id;
@@ -13817,17 +13825,20 @@ var _ = require('underscore');
 module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
   defaults: {
-    userName: 'mime555',
-    password: '123',
-    fullName: 'Mime Mimerson',
-    imageUrl: 'https://media.giphy.com/media/lgCvugdD94F6o/giphy.gif',
-    profileVideoUrl: 'https://youtu.be/H-fJC5EN8LY',
-    age: 30,
-    interests: "Miming, mimes, mime stuff",
     influences: "Marcel Marceau",
-    city: 'Charleston',
-    state: 'SC',
   },
+  // defaults: {
+  //   userName: '',
+  //   password: '',
+  //   fullName: '',
+  //   imageUrl: '',
+  //   profileVideoUrl: '',
+  //   age: ,
+  //   interests: "",
+  //   influences: "",
+  //   city: '',
+  //   state: '',
+  // },
   initialize: function () {},
 });
 

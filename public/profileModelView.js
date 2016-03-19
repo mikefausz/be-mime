@@ -7,11 +7,12 @@ module.exports = Backbone.View.extend({
   tagName: 'article',
   template: _.template(tmpl.profile),
   events: {
-    'click button': 'admimerProf'
+    'click .glyphicon-heart': 'admimerProf'
   },
   admimerProf: function() {
     // event.preventDefault();
     // console.log('this', this);
+    console.log("liked " + this.model.attributes.userName);
     var obj = this.model.attributes;
     // console.log(obj);
     delete obj.id;
