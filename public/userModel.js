@@ -3,7 +3,6 @@ var templates = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
-  tagName: 'ul',
   // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
   urlRoot: '/mime',
   // idAttribute: '_id',
