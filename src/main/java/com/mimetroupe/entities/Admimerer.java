@@ -1,7 +1,5 @@
 package com.mimetroupe.entities;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 /**
@@ -23,7 +21,6 @@ public class Admimerer {
 
     @ManyToOne
     private Mime admimerer;
-
 
     public Admimerer() {
     }

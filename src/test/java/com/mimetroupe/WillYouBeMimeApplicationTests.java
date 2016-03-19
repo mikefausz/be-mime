@@ -1,8 +1,6 @@
 package com.mimetroupe;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mimetroupe.controllers.WillYouBeMimeController;
 import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
@@ -15,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -84,23 +82,27 @@ public class WillYouBeMimeApplicationTests {
     @Test
     public void testC() throws  Exception {
         //mime 1
-        Mime userMime = mimeRepository.findOne(1);
+        Mime userMime = mimeRepository.findOne(2);
         //mime 2
-        Mime admimeredMime = mimeRepository.findOne(2);
+        Mime admimeredMime = mimeRepository.findOne(1);
+
 
         admimererRepository.save(new Admimerer(userMime, admimeredMime));
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(admimeredMime);
 
         Assert.assertTrue(admimererRepository.count() == 1);
     }
 
-    //testing returning all admimerers for a specific mime
+    //testing returning all admimerers for a specific mime (people that mime likes)
     // /admimerer GET route method: viewAdmimerer
     @Test
     public void testD() throws  Exception {
         //add another admimerer situation.
         //1 likes 2
         //3 likes 4
-        Admimerer admimererSituation = new Admimerer(mimeRepository.findOne(1), mimeRepository.findOne(4));
+        Admimerer admimererSituation = new Admimerer(mimeRepository.findOne(3), mimeRepository.findOne(1));
 
         admimererRepository.save(admimererSituation);
 
@@ -108,52 +110,27 @@ public class WillYouBeMimeApplicationTests {
 
         List<Mime> admimerer = admimererRepository.findAdmimererByMime(mime);
 
-        Assert.assertTrue(admimerer.size() == 2);
+        Assert.assertTrue(admimerer.size() == 0);
     }
 
-    //testing returning all mimes that admimerer a specific mime
+    //testing returning all mimes that admimerer a specific mime (people that like that mime)
+    // /mimesAdmimerers GET method: mimesAdmierers
     @Test
     public void testE() throws Exception {
 
-
+        Assert.assertTrue(admimererRepository.findMimeByAdmimerer(mimeRepository.findOne(1)).size() == 2);
     }
 
-	@Test
-	public void testX() throws Exception {
-
-//		"mimeman", PasswordStorage.createHash("pass"), "mime mimer", 27, "url", "vid", "mimes", "mimeville", "mimekingdom", "mimes"
-
-		Mime m = mimeRepository.findOne(1);
-		m.setAge(30);
-
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(m);
-
-		mockMvc.perform(
-				MockMvcRequestBuilders.put("/mime")
-						.content(json)
-						.contentType("application/json")
-		);
-		Assert.assertTrue(mimeRepository.findOne(1).getAge() == 30);
-	}
-
-	//testing deleting a mime account
-//	@Test
-//	public void testZ() throws Exception {
+//    @Test
+//    public void testF() throws Exception {
+//        admimererRepository.deleteAll();
 //
-//		Mime m = mimeRepository.findOne(3);
+//        admimererRepository.save()
 //
-//		ObjectMapper mapper = new ObjectMapper();
-//		String json = mapper.writeValueAsString(m);
+//        Mime mime = admimererRepository.findOne(1);
 //
+//        admimererRepository.findMimeByMimeEquals()
 //
-//		mockMvc.perform(
-//				MockMvcRequestBuilders.delete("/mime")
-//						.content(json)
-//						.contentType("application/json")
-//		);
-//
-//		Assert.assertTrue(mimeRepository.count() == 3);
-//	}
+//    }
 
 }
