@@ -83,4 +83,12 @@ module.exports = {
       <li><%= interests %></li>
     </ul>`
   ].join(''),
+
+  admimerers :[
+    `  <ul>
+        <li><h3><%= userName %></h3></li>
+        <li><h4><%= Age %></h4></li>
+        <li><em><%= city %>, <%= state %></em></li>
+      </ul>`
+  ]
 };
