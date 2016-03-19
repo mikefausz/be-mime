@@ -100,21 +100,22 @@ module.exports = Backbone.View.extend({
   },
   addUser: function (event) {
     event.preventDefault();
+    var first = this.$el.find('#firstName').val();
+    var last = this.$el.find('#lastName').val();
     this.model.set({
       userName: this.$el.find('#userName').val(),
       password: this.$el.find('#pwd').val(),
-      fullName: this.$el.find('#fullName').val(),
+      fullName: first + ' ' + last,
       imageUrl: this.$el.find('#imageUrl').val(),
       profileVideoUrl: this.$el.find('#vidUrl').val(),
       age: this.$el.find('#age').val(),
       interests: this.$el.find('#interests').val(),
-      influences: this.$el.find('#influences').val(),
       city: this.$el.find('#city').val(),
       state: this.$el.find('#state').val(),
     });
     this.$el.find('input').val('');
+    this.$el.find('select').val('');
     this.collection.create(this.model);
-    console.log(this.collection);
     this.model = new UserModel({});
   },
   initialize: function () {
@@ -13451,55 +13452,79 @@ return jQuery;
 module.exports = {
   login: [
     `<form class="form-inline" role="role">
-      <div class="form-group">
-        <input type="text" class="form-control" id="login-user" placeholder="User name">
+      <div class="form-group row">
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="login-user" placeholder="Username">
+        </div>
+        <div class="col-sm-5">
+          <input type="password" class="form-control" id="login-pwd" placeholder="Password">
+        </div>
+        <div class="col-lg-2">
+          <button type="submit" class="btn btn-default">Log In</button>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="password" class="form-control" id="login-pwd" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-default">Login</button>
     </form>`
   ].join(''),
 
+
   newUser: [
-    `<form role="form">
+    `<h2>Join The Charade!</h2>
+    <form role="form">
       <div class="form-group form">
-        <input type="text" class="form-control" id="userName" placeholder="User name">
+        <input type="text" class="form-control" id="userName" placeholder="Username">
       </div>
       <div class="form-group">
         <input type="password" class="form-control" id="pwd" placeholder="Password">
       </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="fullName" placeholder="Full name">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <select class="form-control" id="age">
+            <option value="">Age</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="city" placeholder="City">
+        </div>
+        <div class="col-sm-3">
+          <select class="form-control" id="state">
+            <option value="">State</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="imageUrl" placeholder="Image URL">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="vidUrl" placeholder="Profile video URL:">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="age" placeholder="Age">
+        <input type="text" class="form-control" id="vidUrl" placeholder="Profile Video URL">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="interests" placeholder="Interests">
       </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="influences" placeholder="Influences">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="city" placeholder="City">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="state" placeholder="State">
-      </div>
-      <button type="submit" class="btn btn-default btn-block">Submit</button>
+      <button type="submit" class="btn btn-default btn-block">Create New Account</button>
     </form>`
   ].join(''),
+
   currentUser: [
     `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
     <h2><%= userName %></h2></div>`
   ].join(''),
+
   profile: [
     `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
     <ul>
