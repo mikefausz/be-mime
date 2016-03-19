@@ -12,6 +12,8 @@ module.exports = Backbone.View.extend({
   logoutUser: function() {
     console.log(this.model);
     var logout = new LogoutModel(this.model);
+    window.log = logout;
+    delete logout.attributes.id;
     logout.save();
   },
   initialize: function () {

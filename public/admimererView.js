@@ -7,7 +7,7 @@ module.exports = Backbone.View.extend({
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {
-    var markup = this.template(this.model.attributes.mime);
+    var markup = this.template(this.model.toJSON());
     this.$el.html(markup);
     return this;
   }

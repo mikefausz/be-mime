@@ -3,9 +3,7 @@ var templates = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
-  // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
   urlRoot: '/mime',
-  // idAttribute: '_id',
   defaults: {
     userName: 'mime555',
     password: '123',
@@ -18,11 +16,5 @@ module.exports = Backbone.Model.extend({
     city: 'Charleston',
     state: 'SC',
   },
-  template: _.template(templates.profile),
   initialize: function () {},
-  render: function () {
-    var markup = this.template(this.model.toJSON());
-    this.$el.html(markup);
-    return this;
-  }
 });
