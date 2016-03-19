@@ -119,8 +119,18 @@ public class WillYouBeMimeApplicationTests {
     public void testE() throws Exception {
 
         Assert.assertTrue(admimererRepository.findMimeByAdmimerer(mimeRepository.findOne(1)).size() == 2);
-
-
     }
+
+//    @Test
+//    public void testF() throws Exception {
+//        admimererRepository.deleteAll();
+//
+//        admimererRepository.save()
+//
+//        Mime mime = admimererRepository.findOne(1);
+//
+//        admimererRepository.findMimeByMimeEquals()
+//
+//    }
 
 }

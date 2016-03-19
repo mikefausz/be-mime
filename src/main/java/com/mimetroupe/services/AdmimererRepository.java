@@ -24,7 +24,7 @@ public interface AdmimererRepository extends CrudRepository<Admimerer, Integer> 
 
 
     //SELECT admimerer_Id FROM admimerer WHERE admimerer_id = mime_id  ????? THIS ISNT RIGHT
-    List<Mime> findAdmimererByMimeIsAdmimerer(Mime mime);  //????? EEGGH? what is this. Is this going to do something?!
+    List<Mime> findMimeByMimeEquals(Mime mime);  //????? EEGGH? what is this. Is this going to do something?!
 
 
 
