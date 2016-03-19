@@ -5,8 +5,8 @@ import javax.persistence.*;
 /**
  * Created by branden on 3/17/16 at 13:56.
  *
- * This Class is defined to map a Mime (user) to a Admimerer (also of type Mime)
- * Admimerer is a Mime that the original Mime(User) has a mime interest in.
+ * This Class is defined to map a Mime (user) to a admimerer (also of type Mime)
+ * admimerer is a Mime that the original Mime(User) has a mime interest in.
  *
  */
 @Entity
@@ -20,11 +20,15 @@ public class Admimerer {
     private Mime mime;
 
     @ManyToOne
-    private Mime Admimerer;
+    private Mime admimerer;
 
     public Admimerer() {
     }
 
+    public Admimerer(Mime mime, Mime admimerer) {
+        this.mime = mime;
+        this.admimerer = admimerer;
+    }
 
     public Mime getMime() {
         return mime;
@@ -35,10 +39,10 @@ public class Admimerer {
     }
 
     public Mime getAdmimerer() {
-        return Admimerer;
+        return admimerer;
     }
 
     public void setAdmimerer(Mime admimerer) {
-        Admimerer = admimerer;
+        this.admimerer = admimerer;
     }
 }
