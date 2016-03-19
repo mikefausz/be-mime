@@ -3,14 +3,12 @@ var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  el: '#current-user-prof',
-  template: _.template(tmpl.currentUser),
-  initialize: function () {
-    this.render();
-  },
+  tagName: 'row admimerer',
+  template: _.template(tmpl.admimerers),
+  initialize: function () {},
   render: function () {
-    var markup = this.template(this.model);
+    var markup = this.template(this.model.toJSON());
     this.$el.html(markup);
     return this;
-  },
+  }
 });
