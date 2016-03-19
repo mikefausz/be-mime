@@ -5,6 +5,7 @@ import org.hibernate.annotations.*;
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,8 +48,11 @@ public class Mime {
     @Column(nullable = false)
     private String influences;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Admimerer> admimerer;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "admimerer")
+    private List<Admimerer> admimerer = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "mime")
+    private List<Admimerer> mime = new ArrayList<>();
 
 
     public Mime() {
