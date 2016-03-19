@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -53,18 +54,6 @@ public class WillYouBeMimeController {
         }
     }
 
-    //updates the currently logged-in mime
-    @RequestMapping(path = "/mime/{id}", method = RequestMethod.PUT)
-    public void editMime(@RequestBody Mime mime, @PathVariable("id") int id) {
-        mimeRepository.save(mime);
-    }
-
-    //deletes the currently logged-in mime
-    @RequestMapping(path = "/mime/{id}", method = RequestMethod.DELETE)
-    public void deleteAccount(@PathVariable("id") int id) {
-        mimeRepository.delete(id);
-    }
-
     //return all the mimes except the currently logged in mime
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
     public List<Mime> displayAllMimesExceptUser(HttpSession session) throws Exception {
@@ -95,16 +84,19 @@ public class WillYouBeMimeController {
 
     //login route. If something goes wrong it will return null, which FE can then handle.
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public Mime login(HttpSession session, String userName, String password) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
-        Mime mime = mimeRepository.findByUserName(userName);
+    public Mime login(HttpSession session, @RequestBody HashMap data) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
 
-        if (mime != null && PasswordStorage.verifyPassword(password, mime.getPassword())) {
-            session.setAttribute("userName", userName);
+
+        Mime mime = mimeRepository.findByUserName((String) data.get("userName"));
+
+        if (mime != null && PasswordStorage.verifyPassword((String) data.get("password"), mime.getPassword())) {
+            session.setAttribute("userName", mime.getUserName());
             return mime;
         } else {
             return null;
         }
     }
+
 
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
@@ -126,14 +118,9 @@ public class WillYouBeMimeController {
     //returns a list of all the mimes that admimer a specific mime. This is the opposite of /admimerer
     @RequestMapping(path = "/mimesAdmimerers", method = RequestMethod.GET)
     public List<Mime> mimesAdmimerers(HttpSession session) {
-
-
-
-
-        return null;
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+        return admimererRepository.findMimeByAdmimerer(mime);
     }
-
-
 
 
 
@@ -141,4 +128,7 @@ public class WillYouBeMimeController {
     public void logout(HttpSession session) {
         session.invalidate();
     }
+
+
+
 }

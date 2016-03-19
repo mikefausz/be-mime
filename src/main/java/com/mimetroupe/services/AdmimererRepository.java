@@ -19,7 +19,8 @@ public interface AdmimererRepository extends CrudRepository<Admimerer, Integer> 
     //returns all mimes that a specific mime admimers.
     List<Mime> findAdmimererByMime(Mime mime);
 
-    //SELECT admimerer_Id FROM admimerer where
+    //SELECT admimerer_Id FROM admimerer WHERE admimerer_id = mime_id
+    List<Mime> findMimeByAdmimerer(Mime mime);
 
 
 
