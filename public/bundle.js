@@ -54,7 +54,7 @@ module.exports = Backbone.View.extend({
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {
-    var markup = this.template(this.model.attributes.mime);
+    var markup = this.template(this.model.toJSON());
     this.$el.html(markup);
     return this;
   }
@@ -75,6 +75,8 @@ module.exports = Backbone.View.extend({
   logoutUser: function() {
     console.log(this.model);
     var logout = new LogoutModel(this.model);
+    window.log = logout;
+    delete logout.attributes.id;
     logout.save();
   },
   initialize: function () {
@@ -168,7 +170,6 @@ var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
   tagName: 'ul',
-  // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
   urlRoot: '/login',
   idAttribute: '_id',
   defaults: {
@@ -183,7 +184,6 @@ var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
   urlRoot: '/logout',
-  // idAttribute: '_id',
   initialize: function () {},
 });
 
@@ -13770,7 +13770,7 @@ module.exports = {
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
         <li class="text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
-        <li class="text-muted"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Delete Profile</li>
+        <li class="text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
       </ul>
     </div>`
   ].join(''),
@@ -13803,7 +13803,6 @@ var UserModel = require('./userModel');
 
 module.exports = Backbone.Collection.extend({
   model: UserModel,
-  // url: 'http://tiny-tiny.herokuapp.com/collections/mime',
   url: '/mime',
   initialize: function () {
     console.log('YOUVE CREATED A MIME COLLECTION!');
@@ -13816,9 +13815,7 @@ var templates = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
-  // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
   urlRoot: '/mime',
-  // idAttribute: '_id',
   defaults: {
     userName: 'mime555',
     password: '123',
@@ -13831,13 +13828,7 @@ module.exports = Backbone.Model.extend({
     city: 'Charleston',
     state: 'SC',
   },
-  template: _.template(templates.profile),
   initialize: function () {},
-  render: function () {
-    var markup = this.template(this.model.toJSON());
-    this.$el.html(markup);
-    return this;
-  }
 });
 
 },{"./templates":17,"backbone":12,"underscore":14}]},{},[10]);
