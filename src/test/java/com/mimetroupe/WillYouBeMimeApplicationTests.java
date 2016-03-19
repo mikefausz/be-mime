@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -81,23 +82,27 @@ public class WillYouBeMimeApplicationTests {
     @Test
     public void testC() throws  Exception {
         //mime 1
-        Mime userMime = mimeRepository.findOne(1);
+        Mime userMime = mimeRepository.findOne(2);
         //mime 2
-        Mime admimeredMime = mimeRepository.findOne(2);
+        Mime admimeredMime = mimeRepository.findOne(1);
+
 
         admimererRepository.save(new Admimerer(userMime, admimeredMime));
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(admimeredMime);
 
         Assert.assertTrue(admimererRepository.count() == 1);
     }
 
-    //testing returning all admimerers for a specific mime
+    //testing returning all admimerers for a specific mime (people that mime likes)
     // /admimerer GET route method: viewAdmimerer
     @Test
     public void testD() throws  Exception {
         //add another admimerer situation.
         //1 likes 2
         //3 likes 4
-        Admimerer admimererSituation = new Admimerer(mimeRepository.findOne(1), mimeRepository.findOne(4));
+        Admimerer admimererSituation = new Admimerer(mimeRepository.findOne(3), mimeRepository.findOne(1));
 
         admimererRepository.save(admimererSituation);
 
@@ -105,12 +110,15 @@ public class WillYouBeMimeApplicationTests {
 
         List<Mime> admimerer = admimererRepository.findAdmimererByMime(mime);
 
-        Assert.assertTrue(admimerer.size() == 2);
+        Assert.assertTrue(admimerer.size() == 0);
     }
 
-    //testing returning all mimes that admimerer a specific mime
+    //testing returning all mimes that admimerer a specific mime (people that like that mime)
+    // /mimesAdmimerers GET method: mimesAdmierers
     @Test
     public void testE() throws Exception {
+
+        Assert.assertTrue(admimererRepository.findMimeByAdmimerer(mimeRepository.findOne(1)).size() == 2);
 
 
     }
