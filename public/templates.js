@@ -145,7 +145,7 @@ module.exports = {
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
         <li class="text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
-        <li class="text-muted"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Delete Profile</li>
+        <li class="text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
       </ul>
     </div>`
   ].join(''),
