@@ -55,10 +55,30 @@ h1 {
   .well h2 {
     color: white; }
 
+#main .margin {
+  width: 90%;
+  margin: auto; }
+
+#main li {
+  margin-bottom: 5px; }
+
+#main .glyphicon {
+  margin-right: 10px; }
+
 ul {
   display: inline-block;
   vertical-align: top;
-  list-style-type: none; }
+  list-style-type: none;
+  padding: 0; }
 
-.admimirer img, .admimirer .details {
+#admimirer-list .ad-avatar {
+  width: 50px;
+  height: 50px; }
+  #admimirer-list .ad-avatar img {
+    height: 100%; }
+
+#admimirer-list img, #admimirer-list .details {
   display: inline-block; }
+
+#admimirer-list .details {
+  vertical-align: top; }

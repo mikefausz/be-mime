@@ -80,14 +80,39 @@ h1 {
   }
 }
 
+#main {
+  .margin {
+    width: 90%;
+    margin: auto;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .glyphicon {
+    margin-right: 10px;
+  }
+}
+
 ul {
   display: inline-block;
   vertical-align: top;
   list-style-type: none;
+  padding: 0;
 }
 
-.admimirer {
+#admimirer-list {
+  .ad-avatar {
+    width: 50px;
+    height: 50px;
+    img {
+      height: 100%;
+    }
+  }
   img, .details {
     display: inline-block;
   }
+  .details {
+    vertical-align: top;
+  }
+
 }

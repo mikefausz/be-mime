@@ -17,34 +17,36 @@ module.exports = Backbone.View.extend({
   },
   loginUser: function (event) {
     event.preventDefault();
-    $('#home').toggleClass('hidden');
-    $('#main').toggleClass('hidden');
-    console.log(this.$el.find('#login-user').val());
-    console.log(this.$el.find('#login-pwd').val());
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
-    this.$el.find('input').val('');
+    var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            console.log('success! ' + response);
-            window.glob = response;
             new CurrentUserView({model: response});
+            var userCollection = new UserCollection();
+            userCollection.fetch().done(function(){
+              new ProfileListView({collection: userCollection});
+            });
+            var admimererCollection = new AdmimererCollection();
+            admimererCollection.fetch().done(function(){
+              new AdmimererListView({collection: admimererCollection});
+            });
+            $('#home').toggleClass('hidden');
+            $('#main').toggleClass('hidden');
+            that.$el.find('input').val('');
+            console.log('success! ' + response);
         },
         error: function(model, response) {
             console.log('error! ' + response);
         }
     });
-    var userCollection = new UserCollection();
-    userCollection.fetch().done(function(){
-      new ProfileListView({collection: userCollection});
-    });
-    var admimererCollection = new AdmimererCollection();
-    admimererCollection.fetch().done(function(){
-      new AdmimererListView({collection: admimererCollection});
-    });
-      this.model = new LoginModel({});
+
+    // window.bill = admimererCollection;
+    // window.bill2 = admimererCollection.models;
+    // window.bill3 = admimererCollection.models;
+    this.model = new LoginModel({});
   },
   initialize: function () {
     if(!this.model) {

@@ -10,7 +10,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./admimererModel":3,"backbone":11}],2:[function(require,module,exports){
+},{"./admimererModel":3,"backbone":12}],2:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -32,7 +32,7 @@ module.exports =  Backbone.View.extend({
   }
 });
 
-},{"./admimererView":4,"backbone":11,"jquery":12,"underscore":13}],3:[function(require,module,exports){
+},{"./admimererView":4,"backbone":12,"jquery":13,"underscore":14}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 var templates = require('./templates');
 var _ = require('underscore');
@@ -44,30 +44,39 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./templates":16,"backbone":11,"underscore":13}],4:[function(require,module,exports){
+},{"./templates":17,"backbone":12,"underscore":14}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  tagName: 'row admimerer',
+  className: 'row admimerer',
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {
-    var markup = this.template(this.model.toJSON());
+    var markup = this.template(this.model.attributes.mime);
     this.$el.html(markup);
     return this;
   }
 });
 
-},{"./templates":16,"backbone":11,"underscore":13}],5:[function(require,module,exports){
+},{"./templates":17,"backbone":12,"underscore":14}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
+var LogoutModel = require('./logoutModel.js');
 
 module.exports = Backbone.View.extend({
   el: '#current-user-prof',
   template: _.template(tmpl.currentUser),
+  events: {
+    'click button': 'logoutUser'
+  },
+  logoutUser: function() {
+    console.log(this.model);
+    var logout = new LogoutModel(this.model);
+    logout.save();
+  },
   initialize: function () {
     this.render();
   },
@@ -78,7 +87,7 @@ module.exports = Backbone.View.extend({
   },
 });
 
-},{"./templates":16,"backbone":11,"underscore":13}],6:[function(require,module,exports){
+},{"./logoutModel.js":9,"./templates":17,"backbone":12,"underscore":14}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var LoginModel = require('./loginModel');
 
@@ -91,7 +100,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./loginModel":8,"backbone":11}],7:[function(require,module,exports){
+},{"./loginModel":8,"backbone":12}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
@@ -111,34 +120,36 @@ module.exports = Backbone.View.extend({
   },
   loginUser: function (event) {
     event.preventDefault();
-    $('#home').toggleClass('hidden');
-    $('#main').toggleClass('hidden');
-    console.log(this.$el.find('#login-user').val());
-    console.log(this.$el.find('#login-pwd').val());
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
-    this.$el.find('input').val('');
+    var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            console.log('success! ' + response);
-            window.glob = response;
             new CurrentUserView({model: response});
+            var userCollection = new UserCollection();
+            userCollection.fetch().done(function(){
+              new ProfileListView({collection: userCollection});
+            });
+            var admimererCollection = new AdmimererCollection();
+            admimererCollection.fetch().done(function(){
+              new AdmimererListView({collection: admimererCollection});
+            });
+            $('#home').toggleClass('hidden');
+            $('#main').toggleClass('hidden');
+            that.$el.find('input').val('');
+            console.log('success! ' + response);
         },
         error: function(model, response) {
             console.log('error! ' + response);
         }
     });
-    var userCollection = new UserCollection();
-    userCollection.fetch().done(function(){
-      new ProfileListView({collection: userCollection});
-    });
-    var admimererCollection = new AdmimererCollection();
-    admimererCollection.fetch().done(function(){
-      new AdmimererListView({collection: admimererCollection});
-    });
-      this.model = new LoginModel({});
+
+    // window.bill = admimererCollection;
+    // window.bill2 = admimererCollection.models;
+    // window.bill3 = admimererCollection.models;
+    this.model = new LoginModel({});
   },
   initialize: function () {
     if(!this.model) {
@@ -152,7 +163,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":14,"./templates":16,"./userCollection.js":17,"backbone":11,"jquery":12,"underscore":13}],8:[function(require,module,exports){
+},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":15,"./templates":17,"./userCollection.js":18,"backbone":12,"jquery":13,"underscore":14}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -167,7 +178,16 @@ module.exports = Backbone.Model.extend({
   initialize: function () {},
 });
 
-},{"backbone":11}],9:[function(require,module,exports){
+},{"backbone":12}],9:[function(require,module,exports){
+var Backbone = require('backbone');
+
+module.exports = Backbone.Model.extend({
+  urlRoot: '/logout',
+  // idAttribute: '_id',
+  initialize: function () {},
+});
+
+},{"backbone":12}],10:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var UserCollection = require('./userCollection');
@@ -185,7 +205,7 @@ $(document).ready(function(){
   $('#new-user').html(newUserFormMarkup.render().el);
 });
 
-},{"./loginCollection":6,"./loginFormView":7,"./newUserFormView":10,"./userCollection":17,"backbone":11,"jquery":12}],10:[function(require,module,exports){
+},{"./loginCollection":6,"./loginFormView":7,"./newUserFormView":11,"./userCollection":18,"backbone":12,"jquery":13}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -229,7 +249,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":16,"./userModel":18,"backbone":11,"underscore":13}],11:[function(require,module,exports){
+},{"./templates":17,"./userModel":19,"backbone":12,"underscore":14}],12:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2153,7 +2173,7 @@ module.exports = Backbone.View.extend({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":12,"underscore":13}],12:[function(require,module,exports){
+},{"jquery":13,"underscore":14}],13:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -11997,7 +12017,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13547,7 +13567,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13569,7 +13589,7 @@ module.exports =  Backbone.View.extend({
   }
 });
 
-},{"./profileModelView":15,"backbone":11,"jquery":12,"underscore":13}],15:[function(require,module,exports){
+},{"./profileModelView":16,"backbone":12,"jquery":13,"underscore":14}],16:[function(require,module,exports){
 var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
@@ -13602,7 +13622,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./admimererModel.js":3,"./templates":16,"backbone":11,"underscore":13}],16:[function(require,module,exports){
+},{"./admimererModel.js":3,"./templates":17,"backbone":12,"underscore":14}],17:[function(require,module,exports){
 module.exports = {
   login: [
     `<form class="form-inline" role="role">
@@ -13741,33 +13761,43 @@ module.exports = {
   ].join(''),
 
   currentUser: [
-    `<div class="row">
-    <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-    <h2><%= userName %></h2>
+    `<div class="row text-left">
+      <h2>Welcome, <%= userName %></h2>
+      <button type="button" class="btn btn-default">Log Out</button>
+      <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+      <h2><%= userName %></h2>
+      <ul class="row-left">
+        <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
+        <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
+        <li class="text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
+        <li class="text-muted"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Delete Profile</li>
+      </ul>
     </div>`
   ].join(''),
 
   profile: [
+
     `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
     <ul>
       <li><h3><%= userName %></h3></li>
-      <li><em><%= city %>, <%= state %></em></li>
-      <li><%= age %></li>
+      <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
+      <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
       <li><%= interests %></li>
-      <li><button class="form-control" type="button" name="button">Admimer</button></li>
+      <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
     </ul>`
   ].join(''),
 
   admimerers :[
-    `  <ul>
-        <li><h3><%= userName %></h3></li>
-        <li><h4><%= Age %></h4></li>
-        <li><em><%= city %>, <%= state %></em></li>
-      </ul>`
+    `
+      <img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
+    <ul class="details">
+      <li><h4><%= userName %></h4></li>
+      <li><strong><%= age %></strong> <%= city %>, <%= state %></p></li>
+    </ul>`
   ].join(''),
 };
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var Backbone = require('backbone');
 var UserModel = require('./userModel');
 
@@ -13780,7 +13810,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./userModel":18,"backbone":11}],18:[function(require,module,exports){
+},{"./userModel":19,"backbone":12}],19:[function(require,module,exports){
 var Backbone = require('backbone');
 var templates = require('./templates');
 var _ = require('underscore');
@@ -13810,4 +13840,4 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./templates":16,"backbone":11,"underscore":13}]},{},[9]);
+},{"./templates":17,"backbone":12,"underscore":14}]},{},[10]);
