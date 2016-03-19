@@ -1,6 +1,7 @@
 package com.mimetroupe;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mimetroupe.controllers.WillYouBeMimeController;
 import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -107,5 +109,15 @@ public class WillYouBeMimeApplicationTests {
         Assert.assertTrue(admimerer.size() == 2);
 
     }
+
+	//testing deleting a mime account
+	@Test
+	public void testZ() throws Exception {
+		mockMvc.perform(
+				MockMvcRequestBuilders.delete("/user/1")
+		);
+
+		Assert.assertTrue(mimeRepository.count() == 3);
+	}
 
 }

@@ -53,6 +53,18 @@ public class WillYouBeMimeController {
         }
     }
 
+    //updates the currently logged-in mime
+    @RequestMapping(path = "/mime/{id}", method = RequestMethod.PUT)
+    public void editMime(@RequestBody Mime mime, @PathVariable("id") int id) {
+        mimeRepository.save(mime);
+    }
+
+    //deletes the currently logged-in mime
+    @RequestMapping(path = "/mime/{id}", method = RequestMethod.DELETE)
+    public void deleteAccount(@PathVariable("id") int id) {
+        mimeRepository.delete(id);
+    }
+
     //return all the mimes except the currently logged in mime
     @RequestMapping(path = "/mime", method = RequestMethod.GET)
     public List<Mime> displayAllMimesExceptUser(HttpSession session) throws Exception {
@@ -94,7 +106,6 @@ public class WillYouBeMimeController {
         }
     }
 
-
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
     public void addAdmimerer(HttpSession session, int admimererId) {
@@ -118,8 +129,11 @@ public class WillYouBeMimeController {
 
 
 
+
         return null;
     }
+
+
 
 
 
