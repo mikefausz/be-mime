@@ -27,6 +27,4 @@ public interface AdmimererRepository extends CrudRepository<Admimerer, Integer> 
 //    @Query(value = "DELETE FROM admimerer WHERE mime_id = ?1 AND admimerer_id = ?1"  ,nativeQuery = true)
 //    Set<Mime> deleteCascade(int id);
 
-
-
 }
