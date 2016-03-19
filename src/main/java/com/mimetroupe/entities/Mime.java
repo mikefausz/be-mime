@@ -138,4 +138,12 @@ public class Mime {
     public void setInfluences(String influences) {
         this.influences = influences;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

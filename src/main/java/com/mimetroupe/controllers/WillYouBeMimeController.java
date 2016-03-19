@@ -1,5 +1,6 @@
 package com.mimetroupe.controllers;
 
+import com.mimetroupe.entities.Admimerer;
 import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
@@ -94,18 +95,28 @@ public class WillYouBeMimeController {
     }
 
 
+    //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
-    public void addAdmimerer(HttpSession session) {
+    public void addAdmimerer(HttpSession session, int admimererId) {
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
-
+        admimererRepository.save(new Admimerer(mime, mimeRepository.findOne(admimererId)));
     }
 
 
+    //returns a list of all the mimes that a specific mime admimers
     @RequestMapping(path = "/admimerer", method = RequestMethod.GET)
     public List<Mime> viewAdmimerers(HttpSession session) {
         Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
 
-        //return admimererRepository.findByMime(mime);
+        return admimererRepository.findAdmimererByMime(mime);
+    }
+
+    //returns a list of all the mimes that admimer a specific mime. This is the opposite of /admimerer
+    @RequestMapping(path = "/mimesAdmimerers", method = RequestMethod.GET)
+    public List<Mime> mimesAdmimerers(HttpSession session) {
+
+
 
         return null;
     }

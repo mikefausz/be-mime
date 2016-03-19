@@ -1,4 +1,5 @@
 var Backbone = require('backbone');
+var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
@@ -7,15 +8,18 @@ module.exports = Backbone.View.extend({
 
   template: _.template(templates.login),
   events: {
-    'submit form': 'addUser'
+    'submit form': 'loginUser'
   },
   loginUser: function (event) {
     event.preventDefault();
+    $('#home').toggleClass('hidden');
+    $('#main').toggleClass('hidden');
     this.model.set({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
+    this.model.save();
     this.collection.add(this.model);
     console.log(this.collection);
     this.model = new LoginModel({});
