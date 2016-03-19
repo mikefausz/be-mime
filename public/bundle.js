@@ -1,5 +1,23 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Backbone = require('backbone');
+var tmpl = require('./templates');
+var _ = require('underscore');
+
+module.exports = Backbone.View.extend({
+  el: '#current-user-prof',
+  template: _.template(tmpl.currentUser),
+  initialize: function () {
+    this.render();
+  },
+  render: function () {
+    var markup = this.template(this.model);
+    this.$el.html(markup);
+    return this;
+  },
+});
+
+},{"./templates":12,"backbone":7,"underscore":9}],2:[function(require,module,exports){
+var Backbone = require('backbone');
 var LoginModel = require('./loginModel');
 
 module.exports = Backbone.Collection.extend({
@@ -11,12 +29,15 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./loginModel":3,"backbone":6}],2:[function(require,module,exports){
+},{"./loginModel":4,"backbone":7}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
+var UserCollection = require('./userCollection.js');
+var ProfileListView = require('./profileListView.js');
+var CurrentUserView = require('./currentUserView.js');
 
 module.exports = Backbone.View.extend({
 
@@ -35,10 +56,23 @@ module.exports = Backbone.View.extend({
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
-    this.collection.create(this.model.toJSON());
-    this.collection.add(this.model);
-    console.log(this.model);
-    console.log(this.model.toJSON());
+    this.collection.create(this.model.toJSON(),{
+        success: function(model, response) {
+            console.log('success! ' + response);
+            window.glob = response;
+            new CurrentUserView({model: response});
+        },
+        error: function(model, response) {
+            console.log('error! ' + response);
+        }
+    });
+    // this.collection.add(this.model);
+    // console.log(this.model);
+    // console.log(this.model.toJSON());
+    var userCollection = new UserCollection();
+      userCollection.fetch().done(function(){
+    new ProfileListView({collection: userCollection});
+  });
     this.model = new LoginModel({});
   },
   initialize: function () {
@@ -53,7 +87,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./loginModel":3,"./templates":9,"backbone":6,"jquery":7,"underscore":8}],3:[function(require,module,exports){
+},{"./currentUserView.js":1,"./loginModel":4,"./profileListView.js":10,"./templates":12,"./userCollection.js":13,"backbone":7,"jquery":8,"underscore":9}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -68,7 +102,7 @@ module.exports = Backbone.Model.extend({
   initialize: function () {},
 });
 
-},{"backbone":6}],4:[function(require,module,exports){
+},{"backbone":7}],5:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var UserCollection = require('./userCollection');
@@ -86,7 +120,7 @@ $(document).ready(function(){
   $('#new-user').html(newUserFormMarkup.render().el);
 });
 
-},{"./loginCollection":1,"./loginFormView":2,"./newUserFormView":5,"./userCollection":10,"backbone":6,"jquery":7}],5:[function(require,module,exports){
+},{"./loginCollection":2,"./loginFormView":3,"./newUserFormView":6,"./userCollection":13,"backbone":7,"jquery":8}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -130,7 +164,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":9,"./userModel":11,"backbone":6,"underscore":8}],6:[function(require,module,exports){
+},{"./templates":12,"./userModel":14,"backbone":7,"underscore":9}],7:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2054,7 +2088,7 @@ module.exports = Backbone.View.extend({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":7,"underscore":8}],7:[function(require,module,exports){
+},{"jquery":8,"underscore":9}],8:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -11898,7 +11932,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13448,7 +13482,45 @@ return jQuery;
   }
 }.call(this));
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
+var ProfileView = require('./profileModelView');
+
+module.exports =  Backbone.View.extend({
+  el: '#profile-list',
+  initialize: function () {
+    this.addAll();
+  },
+
+  addOne: function (el) {
+      var modelView = new ProfileView({model: el});
+      this.$el.append(modelView.render().el);
+  },
+  addAll: function () {
+    this.$el.html('');
+    _.each(this.collection.models, this.addOne, this);
+  }
+});
+
+},{"./profileModelView":11,"backbone":7,"jquery":8,"underscore":9}],11:[function(require,module,exports){
+var Backbone = require('backbone');
+var tmpl = require('./templates');
+var _ = require('underscore');
+
+module.exports = Backbone.View.extend({
+  tagName: 'article',
+  template: _.template(tmpl.profile),
+  initialize: function () {},
+  render: function () {
+    var markup = this.template(this.model.toJSON());
+    this.$el.html(markup);
+    return this;
+  }
+});
+
+},{"./templates":12,"backbone":7,"underscore":9}],12:[function(require,module,exports){
 module.exports = {
   login: [
     `<form class="form-inline" role="role">
@@ -13521,8 +13593,10 @@ module.exports = {
   ].join(''),
 
   currentUser: [
-    `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-    <h2><%= userName %></h2></div>`
+    `<div class="row">
+    <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+    <h2><%= userName %></h2>
+    </div>`
   ].join(''),
 
   profile: [
@@ -13532,11 +13606,12 @@ module.exports = {
       <li><em><%= city %>, <%= state %></em></li>
       <li><%= age %></li>
       <li><%= interests %></li>
+      <li><button class="form-control" type="button" name="button">Admimer</button></li>
     </ul>`
   ].join(''),
 };
 
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 var UserModel = require('./userModel');
 
@@ -13549,7 +13624,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./userModel":11,"backbone":6}],11:[function(require,module,exports){
+},{"./userModel":14,"backbone":7}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 var templates = require('./templates');
 var _ = require('underscore');
@@ -13580,4 +13655,4 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./templates":9,"backbone":6,"underscore":8}]},{},[4]);
+},{"./templates":12,"backbone":7,"underscore":9}]},{},[5]);

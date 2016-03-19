@@ -3,6 +3,9 @@ var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
+var UserCollection = require('./userCollection.js');
+var ProfileListView = require('./profileListView.js');
+var CurrentUserView = require('./currentUserView.js');
 
 module.exports = Backbone.View.extend({
 
@@ -21,10 +24,23 @@ module.exports = Backbone.View.extend({
       password: this.$el.find('#login-pwd').val(),
     });
     this.$el.find('input').val('');
-    this.collection.create(this.model.toJSON());
-    this.collection.add(this.model);
-    console.log(this.model);
-    console.log(this.model.toJSON());
+    this.collection.create(this.model.toJSON(),{
+        success: function(model, response) {
+            console.log('success! ' + response);
+            window.glob = response;
+            new CurrentUserView({model: response});
+        },
+        error: function(model, response) {
+            console.log('error! ' + response);
+        }
+    });
+    // this.collection.add(this.model);
+    // console.log(this.model);
+    // console.log(this.model.toJSON());
+    var userCollection = new UserCollection();
+      userCollection.fetch().done(function(){
+    new ProfileListView({collection: userCollection});
+  });
     this.model = new LoginModel({});
   },
   initialize: function () {

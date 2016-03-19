@@ -70,8 +70,10 @@ module.exports = {
   ].join(''),
 
   currentUser: [
-    `<img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-    <h2><%= userName %></h2></div>`
+    `<div class="row">
+    <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+    <h2><%= userName %></h2>
+    </div>`
   ].join(''),
 
   profile: [
@@ -81,6 +83,7 @@ module.exports = {
       <li><em><%= city %>, <%= state %></em></li>
       <li><%= age %></li>
       <li><%= interests %></li>
+      <li><button class="form-control" type="button" name="button">Admimer</button></li>
     </ul>`
   ].join(''),
 };
