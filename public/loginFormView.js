@@ -21,6 +21,7 @@ module.exports = Backbone.View.extend({
       userName: this.$el.find('#login-user').val(),
       password: this.$el.find('#login-pwd').val(),
     });
+    console.log("login user " + this.model.attributes.userName);
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {

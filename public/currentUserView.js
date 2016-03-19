@@ -7,14 +7,20 @@ module.exports = Backbone.View.extend({
   el: '#current-user-prof',
   template: _.template(tmpl.currentUser),
   events: {
-    'click button': 'logoutUser'
+    'click button': 'logoutUser',
+    'click .glyphicon-remove-sign': 'deleteUser'
   },
   logoutUser: function() {
-    console.log(this.model);
-    var logout = new LogoutModel(this.model);
-    window.log = logout;
-    delete logout.attributes.id;
+    var logout = new LogoutModel();
     logout.save();
+    $('#main').addClass('hidden');
+    $('#home').removeClass('hidden');
+    $('#current-user-prof').html('');
+    $('#profile-list').html('');
+    $('#admimerer-list').html('');
+  },
+  deleteUser: function() {
+    this.model.destroy();
   },
   initialize: function () {
     this.render();
