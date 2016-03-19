@@ -136,28 +136,38 @@ module.exports = {
   ].join(''),
 
   currentUser: [
-    `<div class="row">
-    <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-    <h2><%= userName %></h2>
+    `<div class="row text-left">
+      <h2>Welcome, <%= userName %></h2>
+      <button type="button" class="btn btn-default">Log Out</button>
+      <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
+      <h2><%= userName %></h2>
+      <ul class="row-left">
+        <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
+        <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
+        <li class="text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
+        <li class="text-muted"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Delete Profile</li>
+      </ul>
     </div>`
   ].join(''),
 
   profile: [
+
     `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
     <ul>
       <li><h3><%= userName %></h3></li>
-      <li><em><%= city %>, <%= state %></em></li>
-      <li><%= age %></li>
+      <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
+      <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
       <li><%= interests %></li>
-      <li><button class="form-control" type="button" name="button">Admimer</button></li>
+      <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
     </ul>`
   ].join(''),
 
   admimerers :[
-    `  <ul>
-        <li><h3><%= userName %></h3></li>
-        <li><h4><%= Age %></h4></li>
-        <li><em><%= city %>, <%= state %></em></li>
-      </ul>`
+    `
+      <img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
+    <ul class="details">
+      <li><h4><%= userName %></h4></li>
+      <li><strong><%= age %></strong> <%= city %>, <%= state %></p></li>
+    </ul>`
   ].join(''),
 };
