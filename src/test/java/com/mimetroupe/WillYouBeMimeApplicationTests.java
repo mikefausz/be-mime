@@ -1,5 +1,6 @@
 package com.mimetroupe;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mimetroupe.controllers.WillYouBeMimeController;
 import com.mimetroupe.entities.Admimerer;
@@ -117,11 +118,39 @@ public class WillYouBeMimeApplicationTests {
 
     }
 
+	@Test
+	public void testX() throws Exception {
+
+//		"mimeman", PasswordStorage.createHash("pass"), "mime mimer", 27, "url", "vid", "mimes", "mimeville", "mimekingdom", "mimes"
+
+		Mime m = mimeRepository.findOne(1);
+		m.setAge(30);
+
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(m);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.put("/mime")
+						.content(json)
+						.contentType("application/json")
+		);
+		Assert.assertTrue(mimeRepository.findOne(1).getAge() == 30);
+	}
+
 	//testing deleting a mime account
 //	@Test
 //	public void testZ() throws Exception {
+//
+//		Mime m = mimeRepository.findOne(3);
+//
+//		ObjectMapper mapper = new ObjectMapper();
+//		String json = mapper.writeValueAsString(m);
+//
+//
 //		mockMvc.perform(
-//				MockMvcRequestBuilders.delete("/user/1")
+//				MockMvcRequestBuilders.delete("/mime")
+//						.content(json)
+//						.contentType("application/json")
 //		);
 //
 //		Assert.assertTrue(mimeRepository.count() == 3);

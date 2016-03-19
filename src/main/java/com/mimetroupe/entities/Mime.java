@@ -1,6 +1,7 @@
 package com.mimetroupe.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by branden on 3/17/16 at 13:29.
@@ -41,6 +42,7 @@ public class Mime {
 
     @Column(nullable = false)
     private String influences;
+
 
 
     public Mime() {

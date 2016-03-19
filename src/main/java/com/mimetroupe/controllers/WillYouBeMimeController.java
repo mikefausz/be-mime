@@ -5,7 +5,9 @@ import com.mimetroupe.entities.Mime;
 import com.mimetroupe.services.AdmimererRepository;
 import com.mimetroupe.services.MimeRepository;
 import com.mimetroupe.utilities.PasswordStorage;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.web.bind.annotation.*;
 import org.h2.tools.Server;
 import javax.annotation.PostConstruct;
@@ -74,15 +76,19 @@ public class WillYouBeMimeController {
     }
 
     //edits currently logged in mime account
-    @RequestMapping(path = "/mime{id}", method = RequestMethod.PUT)
-    public void editProfile(@RequestBody Mime mime, @PathVariable("id") int id) {
+    @RequestMapping(path = "/mime", method = RequestMethod.PUT)
+    public void editProfile(@RequestBody Mime mime) {
         mimeRepository.save(mime);
     }
 
     //deletes currently logged in mime account
-    @RequestMapping(path = "/mime{id}", method = RequestMethod.DELETE)
-    public void deleteProfile(@PathVariable("id") int id) {
-        mimeRepository.delete(id);
+    @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
+    public void deleteProfile(@RequestBody Mime mime, HttpSession session) {
+
+//        admimererRepository.deleteCascade(mime.getId());
+
+        mimeRepository.delete(mime);
+        session.invalidate();
     }
 
     //this method will return one mime
@@ -139,7 +145,4 @@ public class WillYouBeMimeController {
     public void logout(HttpSession session) {
         session.invalidate();
     }
-
-
-
 }
