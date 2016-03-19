@@ -61,6 +61,7 @@ public class WillYouBeMimeApplicationTests {
 				MockMvcRequestBuilders.post("/mime")
 						.content(json)
 						.contentType("application/json")
+                        //.sessionAttr("username", "Alice")
 		);
 		Assert.assertTrue(mimeRepository.count() == 1);
 	}
@@ -108,7 +109,7 @@ public class WillYouBeMimeApplicationTests {
 
         Mime mime = mimeRepository.findOne(1);
 
-        List<Mime> admimerer = admimererRepository.findAdmimererByMime(mime);
+        List<Admimerer> admimerer = admimererRepository.findByMime(mime);
 
         Assert.assertTrue(admimerer.size() == 0);
     }
@@ -118,7 +119,7 @@ public class WillYouBeMimeApplicationTests {
     @Test
     public void testE() throws Exception {
 
-        Assert.assertTrue(admimererRepository.findMimeByAdmimerer(mimeRepository.findOne(1)).size() == 2);
+        Assert.assertTrue(admimererRepository.findByAdmimerer(mimeRepository.findOne(1)).size() == 2);
     }
 
 //    @Test
@@ -133,4 +134,44 @@ public class WillYouBeMimeApplicationTests {
 //
 //    }
 
+
+    @Test
+    public void testX() throws Exception {
+
+//		"mimeman", PasswordStorage.createHash("pass"), "mime mimer", 27, "url", "vid", "mimes", "mimeville", "mimekingdom", "mimes"
+
+        Mime m = mimeRepository.findOne(1);
+        m.setAge(30);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(m);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/mime")
+                        .content(json)
+                        .contentType("application/json")
+        );
+        Assert.assertTrue(mimeRepository.findOne(1).getAge() == 30);
+    }
+
+    //testing deleting a mime account
+//	@Test
+//	public void testZ() throws Exception {
+//
+//		Mime m = mimeRepository.findOne(3);
+//
+//		ObjectMapper mapper = new ObjectMapper();
+//		String json = mapper.writeValueAsString(m);
+//
+//
+//		mockMvc.perform(
+//				MockMvcRequestBuilders.delete("/mime")
+//						.content(json)
+//						.contentType("application/json")
+//		);
+//
+//		Assert.assertTrue(mimeRepository.count() == 3);
+//	}
+
 }
+
