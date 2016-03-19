@@ -6,6 +6,8 @@ var LoginModel = require('./loginModel');
 var UserCollection = require('./userCollection.js');
 var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
+var AdmimererListView = require('./admimererListView.js');
+var AdmimererCollection = require('./admimererCollection.js');
 
 module.exports = Backbone.View.extend({
 
@@ -34,14 +36,15 @@ module.exports = Backbone.View.extend({
             console.log('error! ' + response);
         }
     });
-    // this.collection.add(this.model);
-    // console.log(this.model);
-    // console.log(this.model.toJSON());
     var userCollection = new UserCollection();
-      userCollection.fetch().done(function(){
-    new ProfileListView({collection: userCollection});
-  });
-    this.model = new LoginModel({});
+    userCollection.fetch().done(function(){
+      new ProfileListView({collection: userCollection});
+    });
+    var admimererCollection = new AdmimererCollection();
+    admimererCollection.fetch().done(function(){
+      new AdmimererListView({collection: admimererCollection});
+    });
+      this.model = new LoginModel({});
   },
   initialize: function () {
     if(!this.model) {

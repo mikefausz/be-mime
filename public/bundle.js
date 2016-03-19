@@ -1,5 +1,67 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Backbone = require('backbone');
+var AdmimererModel = require('./admimererModel');
+
+module.exports = Backbone.Collection.extend({
+  model: AdmimererModel,
+  url: '/mimesAdmimerers',
+  initialize: function () {
+    console.log('YOUVE CREATED A MIME COLLECTION!');
+  }
+});
+
+},{"./admimererModel":3,"backbone":11}],2:[function(require,module,exports){
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
+var AdmimererView = require('./admimererView');
+
+module.exports =  Backbone.View.extend({
+  el: '#admimerer-list',
+  initialize: function () {
+    this.addAll();
+  },
+
+  addOne: function (el) {
+      var admimererView = new AdmimererView({model: el});
+      this.$el.append(admimererView.render().el);
+  },
+  addAll: function () {
+    this.$el.html('');
+    _.each(this.collection.models, this.addOne, this);
+  }
+});
+
+},{"./admimererView":4,"backbone":11,"jquery":12,"underscore":13}],3:[function(require,module,exports){
+var Backbone = require('backbone');
+var templates = require('./templates');
+var _ = require('underscore');
+
+module.exports = Backbone.Model.extend({
+  urlRoot: '/admimerers',
+  initialize: function () {
+    console.log('should be new');
+  }
+});
+
+},{"./templates":16,"backbone":11,"underscore":13}],4:[function(require,module,exports){
+var Backbone = require('backbone');
+var tmpl = require('./templates');
+var _ = require('underscore');
+
+module.exports = Backbone.View.extend({
+  tagName: 'row admimerer',
+  template: _.template(tmpl.admimerers),
+  initialize: function () {},
+  render: function () {
+    var markup = this.template(this.model.toJSON());
+    this.$el.html(markup);
+    return this;
+  }
+});
+
+},{"./templates":16,"backbone":11,"underscore":13}],5:[function(require,module,exports){
+var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
 
@@ -16,7 +78,7 @@ module.exports = Backbone.View.extend({
   },
 });
 
-},{"./templates":12,"backbone":7,"underscore":9}],2:[function(require,module,exports){
+},{"./templates":16,"backbone":11,"underscore":13}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var LoginModel = require('./loginModel');
 
@@ -29,7 +91,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./loginModel":4,"backbone":7}],3:[function(require,module,exports){
+},{"./loginModel":8,"backbone":11}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
@@ -38,6 +100,8 @@ var LoginModel = require('./loginModel');
 var UserCollection = require('./userCollection.js');
 var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
+var AdmimererListView = require('./admimererListView.js');
+var AdmimererCollection = require('./admimererCollection.js');
 
 module.exports = Backbone.View.extend({
 
@@ -66,14 +130,15 @@ module.exports = Backbone.View.extend({
             console.log('error! ' + response);
         }
     });
-    // this.collection.add(this.model);
-    // console.log(this.model);
-    // console.log(this.model.toJSON());
     var userCollection = new UserCollection();
-      userCollection.fetch().done(function(){
-    new ProfileListView({collection: userCollection});
-  });
-    this.model = new LoginModel({});
+    userCollection.fetch().done(function(){
+      new ProfileListView({collection: userCollection});
+    });
+    var admimererCollection = new AdmimererCollection();
+    admimererCollection.fetch().done(function(){
+      new AdmimererListView({collection: admimererCollection});
+    });
+      this.model = new LoginModel({});
   },
   initialize: function () {
     if(!this.model) {
@@ -87,7 +152,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./currentUserView.js":1,"./loginModel":4,"./profileListView.js":10,"./templates":12,"./userCollection.js":13,"backbone":7,"jquery":8,"underscore":9}],4:[function(require,module,exports){
+},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":14,"./templates":16,"./userCollection.js":17,"backbone":11,"jquery":12,"underscore":13}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -102,7 +167,7 @@ module.exports = Backbone.Model.extend({
   initialize: function () {},
 });
 
-},{"backbone":7}],5:[function(require,module,exports){
+},{"backbone":11}],9:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var UserCollection = require('./userCollection');
@@ -120,7 +185,7 @@ $(document).ready(function(){
   $('#new-user').html(newUserFormMarkup.render().el);
 });
 
-},{"./loginCollection":2,"./loginFormView":3,"./newUserFormView":6,"./userCollection":13,"backbone":7,"jquery":8}],6:[function(require,module,exports){
+},{"./loginCollection":6,"./loginFormView":7,"./newUserFormView":10,"./userCollection":17,"backbone":11,"jquery":12}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -164,7 +229,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":12,"./userModel":14,"backbone":7,"underscore":9}],7:[function(require,module,exports){
+},{"./templates":16,"./userModel":18,"backbone":11,"underscore":13}],11:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2088,7 +2153,7 @@ module.exports = Backbone.View.extend({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":8,"underscore":9}],8:[function(require,module,exports){
+},{"jquery":12,"underscore":13}],12:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -11932,7 +11997,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13482,7 +13547,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -13504,14 +13569,31 @@ module.exports =  Backbone.View.extend({
   }
 });
 
-},{"./profileModelView":11,"backbone":7,"jquery":8,"underscore":9}],11:[function(require,module,exports){
+},{"./profileModelView":15,"backbone":11,"jquery":12,"underscore":13}],15:[function(require,module,exports){
 var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
+var AdmimererModel = require('./admimererModel.js');
 
 module.exports = Backbone.View.extend({
   tagName: 'article',
   template: _.template(tmpl.profile),
+  events: {
+    'click button': 'admimerProf'
+  },
+  admimerProf: function() {
+    // event.preventDefault();
+    // console.log('this', this);
+    var obj = this.model.attributes;
+    // console.log(obj);
+    delete obj.id;
+    var newAdmimer = new AdmimererModel(obj);
+    // window.newA = newAdmimer;
+    // newAdmimer.save();
+    newAdmimer.save(null, {
+      type: 'POST'
+    });
+  },
   initialize: function () {},
   render: function () {
     var markup = this.template(this.model.toJSON());
@@ -13520,7 +13602,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./templates":12,"backbone":7,"underscore":9}],12:[function(require,module,exports){
+},{"./admimererModel.js":3,"./templates":16,"backbone":11,"underscore":13}],16:[function(require,module,exports){
 module.exports = {
   login: [
     `<form class="form-inline" role="role">
@@ -13564,6 +13646,25 @@ module.exports = {
             <option value="19">19</option>
             <option value="20">20</option>
             <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
           </select>
         </div>
         <div class="col-sm-6">
@@ -13574,8 +13675,55 @@ module.exports = {
             <option value="">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
             <option value="CA">CA</option>
             <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="DC">DC</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
           </select>
         </div>
       </div>
@@ -13609,9 +13757,17 @@ module.exports = {
       <li><button class="form-control" type="button" name="button">Admimer</button></li>
     </ul>`
   ].join(''),
+
+  admimerers :[
+    `  <ul>
+        <li><h3><%= userName %></h3></li>
+        <li><h4><%= Age %></h4></li>
+        <li><em><%= city %>, <%= state %></em></li>
+      </ul>`
+  ].join(''),
 };
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Backbone = require('backbone');
 var UserModel = require('./userModel');
 
@@ -13624,13 +13780,12 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"./userModel":14,"backbone":7}],14:[function(require,module,exports){
+},{"./userModel":18,"backbone":11}],18:[function(require,module,exports){
 var Backbone = require('backbone');
 var templates = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
-  tagName: 'ul',
   // urlRoot: 'http://tiny-tiny.herokuapp.com/collections/mime',
   urlRoot: '/mime',
   // idAttribute: '_id',
@@ -13655,4 +13810,4 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"./templates":12,"backbone":7,"underscore":9}]},{},[5]);
+},{"./templates":16,"backbone":11,"underscore":13}]},{},[9]);
