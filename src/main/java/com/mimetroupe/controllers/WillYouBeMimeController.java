@@ -151,13 +151,20 @@ public class WillYouBeMimeController {
         for (Admimerer a : admimerers) {
             mimes.add(a.getMime());
         }
+        System.out.println("hello");
         return mimes;
     }
 
     @RequestMapping(path = "/mimeMatches", method = RequestMethod.GET)
     public List<Mime> mimeMatches(HttpSession session) {
-
-        return null;
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+        List<Admimerer> admimerers = admimererRepository.findMimeByMimeEquals(mime);
+        List<Mime> mimes = new ArrayList<>();
+        for (Admimerer a : admimerers) {
+            mimes.add(a.getAdmimerer());
+        }
+        System.out.println("hello");
+        return mimes;
     }
 
 

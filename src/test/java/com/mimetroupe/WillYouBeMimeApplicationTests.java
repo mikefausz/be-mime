@@ -155,23 +155,23 @@ public class WillYouBeMimeApplicationTests {
     }
 
     //testing deleting a mime account
-//	@Test
-//	public void testZ() throws Exception {
-//
-//		Mime m = mimeRepository.findOne(3);
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//		String json = mapper.writeValueAsString(m);
-//
-//
-//		mockMvc.perform(
-//				MockMvcRequestBuilders.delete("/mime")
-//						.content(json)
-//						.contentType("application/json")
-//		);
-//
-//		Assert.assertTrue(mimeRepository.count() == 3);
-//	}
+	@Test
+	public void testZ() throws Exception {
+
+		Mime m = mimeRepository.findOne(3);
+
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(m);
+
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.delete("/mime")
+						.content(json)
+						.contentType("application/json")
+		);
+
+		Assert.assertTrue(mimeRepository.count() == 3);
+	}
 
 }
 

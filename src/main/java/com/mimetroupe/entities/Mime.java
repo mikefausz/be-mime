@@ -1,6 +1,11 @@
 package com.mimetroupe.entities;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import java.util.List;
 
 /**
  * Created by branden on 3/17/16 at 13:29.
@@ -41,6 +46,9 @@ public class Mime {
 
     @Column(nullable = false)
     private String influences;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Admimerer> admimerer;
 
 
     public Mime() {
