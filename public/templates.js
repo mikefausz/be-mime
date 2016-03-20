@@ -137,10 +137,15 @@ module.exports = {
 
   currentUser: [
     `<div class="row text-left">
-      <h2>Welcome, <%= userName %></h2>
-      <button type="button" class="btn btn-default">Log Out</button>
       <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-      <h2><%= userName %></h2>
+      <div class="row">
+        <div class="col-lg-7">
+          <h1><%= userName %></h1>
+        </div>
+        <div class="col-lg-5 text-right">
+          <button type="button" class="btn btn-default ">Log Out</button>
+        </div>
+      </div>
       <ul class="row-left">
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
@@ -272,7 +277,7 @@ module.exports = {
 
     `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
     <ul>
-      <li><h3><%= userName %></h3></li>
+      <li><h2><%= userName %></h2></li>
       <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
       <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
       <li><%= interests %></li>

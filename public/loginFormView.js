@@ -26,8 +26,9 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            var currentUser = new UserModel({model: response});
-            new CurrentUserView({model: currentUser});
+            // var currentUser = new UserModel({model: response});
+            var currView = new CurrentUserView({model: response});
+            console.log(currView);
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
