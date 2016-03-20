@@ -26,9 +26,12 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            // var currentUser = new UserModel({model: response});
-            var currView = new CurrentUserView({model: response});
-            console.log(currView);
+            var currentUser = new UserModel(response);
+            console.log("currentUserModel: " + currView);
+            window.currUser = currentUser;
+            // delete currentUser.attributes.id;
+            var currView = new CurrentUserView({model: currentUser});
+            console.log("CurrentUserView: " + currView);
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});

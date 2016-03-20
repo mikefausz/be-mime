@@ -11,6 +11,8 @@ module.exports =  Backbone.View.extend({
 
   addOne: function (el) {
       var modelView = new ProfileView({model: el});
+      console.log("userModel: " + el);
+      console.log("ProfileView " + modelView);
       this.$el.append(modelView.render().el);
   },
   addAll: function () {

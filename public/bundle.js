@@ -50,7 +50,7 @@ var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  className: 'well admimerer',
+  className: 'admimerer',
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {
@@ -148,9 +148,12 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            // var currentUser = new UserModel({model: response});
-            var currView = new CurrentUserView({model: response});
-            console.log(currView);
+            var currentUser = new UserModel(response);
+            console.log("currentUserModel: " + currView);
+            window.currUser = currentUser;
+            // delete currentUser.attributes.id;
+            var currView = new CurrentUserView({model: currentUser});
+            console.log("CurrentUserView: " + currView);
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
@@ -233,7 +236,7 @@ var templates = require('./templates');
 var UserModel = require('./userModel');
 
 module.exports = Backbone.View.extend({
-  className: "well well-lg",
+  className: "well well-lg dark-grey",
   template: _.template(templates.newUser),
   events: {
     'submit form': 'addUser'
@@ -13602,6 +13605,8 @@ module.exports =  Backbone.View.extend({
 
   addOne: function (el) {
       var modelView = new ProfileView({model: el});
+      console.log("userModel: " + el);
+      console.log("ProfileView " + modelView);
       this.$el.append(modelView.render().el);
   },
   addAll: function () {
@@ -13933,9 +13938,8 @@ module.exports = {
   ].join(''),
 
   admimerers :[
-    `
-      <img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
-    <ul class="details">
+    `<img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
+     <ul class="details">
       <li><h4><%= userName %></h4></li>
       <li><strong><%= age %></strong> <%= city %>, <%= state %></p></li>
     </ul>`
@@ -13961,6 +13965,9 @@ var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
+  methodUrl: {
+    'delete': '/mime'
+  },
   // defaults: {
   //   userName: '',
   //   password: '',

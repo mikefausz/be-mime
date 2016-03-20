@@ -15,6 +15,9 @@ body {
   position: fixed;
 }
 
+.dark-grey {
+  background-color: $wellGrey;
+}
 h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -43,7 +46,7 @@ h1 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
   }
   .well {
-    background: $wellGrey;
+    // background: $wellGrey;
     border: 0;
     border-radius: 0;
     border-bottom-right-radius: 8px;
@@ -123,12 +126,32 @@ ul {
 }
 
 #current-user-prof {
-  padding-right: 105px;
+  padding-right: 135px;
   margin-top: 20px;
   button {
     margin-top: 20px;
   }
 }
+
+#profile-list-header {
+  position: fixed;
+  background: white;
+  width: 43%;
+  z-index: 1;
+}
+
+#profile-list {
+  margin-top: 56px;
+}
+
+#admimerer-well {
+  position: fixed;
+  width: 20%;
+  h3 {
+    margin-top: 0;
+  }
+}
+
 #admimirer-list {
   .ad-avatar {
     width: 50px;
@@ -140,7 +163,14 @@ ul {
   img, .details {
     display: inline-block;
   }
+}
+
+.admimerer {
+  color: white;
+  h4 {
+    margin: 0;
+  }
   .details {
-    vertical-align: top;
+    margin-left: 5px;
   }
 }

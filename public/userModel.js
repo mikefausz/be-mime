@@ -4,6 +4,9 @@ var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
+  methodUrl: {
+    'delete': '/mime'
+  },
   // defaults: {
   //   userName: '',
   //   password: '',
