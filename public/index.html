@@ -14,7 +14,7 @@
   <body>
 
     <section id="home">
-      <div class="container-fluid" id="header">
+      <div class="container-fluid header">
         <div class="row">
           <div class="col-sm-7 text-left">
             <h1>Be Mime <small>A dating site for quiet types</small></h1>
@@ -32,30 +32,38 @@
     </section>
 
     <section class="hidden" id="main">
-      <div class="container-fluid margin">
-        <div class="row">
+      <div class="container-fluid">
+        <div class="row header">
           <div class="col-sm-7 text-left">
             <h1>Be Mime <small>A dating site for quiet types</small></h1>
           </div>
           <div class="col-sm-5 text-right">
-
           </div>
         </div>
       </div>
-      <div class="container-fluid margin">
+      <div class="container-fluid margin" id="main-content">
         <div class="row">
-          <div class="col-lg-3 text-left" id="current-user-prof">
-            <!-- load in user profile -->
+          <div class="col-lg-3 text-left fixed">
+            <div id="current-user-prof">
+              <!-- load in user profile -->
+            </div>
+            <div class="hidden" id="edit-form">
+
+            </div>
+          </div>
+          <div class="col-lg-3">
+
           </div>
           <div class="col-lg-6 text-left">
-            <h2>HOT MIMES NEAR YOU</h2>
+            <h3>HOT LOCAL MIMES</h3>
             <div id="profile-list">
               <!-- load in other user profiles -->
               Finding hot mimes near you
             </div>
           </div>
+        <!-- <div class="col-lg-3 text-left fixed" > -->
         <div class="col-lg-3 text-left" >
-          <h2>YOUR ADMIMERERS</h2>
+          <h3>YOUR ADMIMERERS</h3>
           <div id="admimerer-list">
             <!-- load in user's admimerers -->
           </div>

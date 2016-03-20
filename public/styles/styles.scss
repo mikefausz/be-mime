@@ -11,6 +11,10 @@ body {
   display: none;
 }
 
+.fixed {
+  position: fixed;
+}
+
 h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -18,7 +22,6 @@ h1, h2, h3 {
 h1, h2, h3 {
   font-weight: 700;
   text-transform: lowercase;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 }
 
 h1 {
@@ -36,9 +39,33 @@ h1 {
   background-position-x: -124%;
   background-size: 81%;
   background-repeat: no-repeat;
+  h2 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+  }
+  .well {
+    background: $wellGrey;
+    border: 0;
+    border-radius: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 44.5%;
+    float: right;
+    margin-right: 3.5%;
+    margin-bottom: 4%;
+    padding: 3% 3% 4% 3%;
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
+    &:hover {
+      cursor: pointer;
+    }
+    h2 {
+      color: white;
+    }
+  }
 }
 
-#header {
+.header {
   background: black;
   color: white;
   padding: 15px 5%;
@@ -58,32 +85,27 @@ h1 {
   }
 }
 
-.well {
-  background: $wellGrey;
-  border: 0;
-  border-radius: 0;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  width: 44.5%;
-  float: right;
-  margin-right: 3.5%;
-  margin-bottom: 4%;
-  padding: 3% 3% 4% 3%;
-  -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
-  box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.75);
-  &:hover {
-    cursor: pointer;
-  }
-  h2 {
-    color: white;
-  }
-}
+
 
 #main {
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
   .margin {
     width: 90%;
     margin: auto;
+  }
+  #main-content {
+    margin: 100px auto;
+  }
+  h2 {
+
+  }
+  h3 {
+    font-weight: 300;
+    color: grey;
   }
   li {
     margin-bottom: 5px;
@@ -100,6 +122,13 @@ ul {
   padding: 0;
 }
 
+#current-user-prof {
+  padding-right: 105px;
+  margin-top: 20px;
+  button {
+    margin-top: 20px;
+  }
+}
 #admimirer-list {
   .ad-avatar {
     width: 50px;
@@ -114,5 +143,4 @@ ul {
   .details {
     vertical-align: top;
   }
-
 }
