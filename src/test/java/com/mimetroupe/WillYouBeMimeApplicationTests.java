@@ -50,7 +50,7 @@ public class WillYouBeMimeApplicationTests {
     // /mime Post route method: addMime
 	@Test
 	public void testA() throws Exception {
-		Mime mime = new Mime("mimeman", PasswordStorage.createHash("pass"), "mime mimer", 27, "url", "vid", "mimes", "mimeville", "mimekingdom", "mimes");
+		Mime mime = new Mime("mimeman", PasswordStorage.createHash("pass"), "mime mimer", 27, "url", "vid", "mimes", "mimeville", "mimekingdom");
 
 		//this is for creating JSON strings
 		ObjectMapper mapper = new ObjectMapper();
@@ -69,9 +69,9 @@ public class WillYouBeMimeApplicationTests {
     // /mime GET route method: displayAllMimesExceptUser
 	@Test
 	public void testB() throws Exception {
-		mimeRepository.save(new Mime("mimeman2", PasswordStorage.createHash("pass2"), "Mimer Mime", 30, "url2", "vid2", "miming", "mimelandia", "Mimeland", "chapland"));
-        mimeRepository.save(new Mime("mimeman3", PasswordStorage.createHash("pass3"), "Mime Mimerson", 34, "url3", "vid3", "miming", "mimelandia", "Mimeland", "chapland"));
-        mimeRepository.save(new Mime("mimeman4", PasswordStorage.createHash("pass4"), "Justa Mime", 50, "url4", "vid4", "miming", "mimelandia", "Mimeland", "chapland"));
+		mimeRepository.save(new Mime("mimeman2", PasswordStorage.createHash("pass2"), "Mimer Mime", 30, "url2", "vid2", "miming", "mimelandia", "Mimeland"));
+        mimeRepository.save(new Mime("mimeman3", PasswordStorage.createHash("pass3"), "Mime Mimerson", 34, "url3", "vid3", "miming", "mimelandia", "Mimeland"));
+        mimeRepository.save(new Mime("mimeman4", PasswordStorage.createHash("pass4"), "Justa Mime", 50, "url4", "vid4", "miming", "mimelandia", "Mimeland"));
 
 		//should return just one mime out of the 2
 		Assert.assertTrue(mimeRepository.findAllWhereUserNameNot("mimeman2").size() == 3);
@@ -81,16 +81,19 @@ public class WillYouBeMimeApplicationTests {
     //  /admimerer Post route  method: addAdmimerer
     @Test
     public void testC() throws  Exception {
-        //mime 1
-        Mime userMime = mimeRepository.findOne(2);
-        //mime 2
+
+        //mime to admimer
         Mime admimeredMime = mimeRepository.findOne(1);
-
-
-        admimererRepository.save(new Admimerer(userMime, admimeredMime));
 
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(admimeredMime);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/admimerer")
+                        .content(json)
+                        .contentType("application/json")
+                        .sessionAttr("userName", "mimeman2")
+        );
 
         Assert.assertTrue(admimererRepository.count() == 1);
     }
@@ -99,7 +102,7 @@ public class WillYouBeMimeApplicationTests {
     // /admimerer GET route method: viewAdmimerer
     @Test
     public void testD() throws  Exception {
-        //add another admimerer situation.
+        //add another admimerer situation. (we already know this actual route works, see testC
         //1 likes 2
         //3 likes 4
         Admimerer admimererSituation = new Admimerer(mimeRepository.findOne(3), mimeRepository.findOne(1));
@@ -149,6 +152,7 @@ public class WillYouBeMimeApplicationTests {
                 MockMvcRequestBuilders.put("/mime")
                         .content(json)
                         .contentType("application/json")
+                        .sessionAttr("userName", "mimeman")
         );
         Assert.assertTrue(mimeRepository.findOne(1).getAge() == 30);
     }
@@ -167,6 +171,7 @@ public class WillYouBeMimeApplicationTests {
 				MockMvcRequestBuilders.delete("/mime")
 						.content(json)
 						.contentType("application/json")
+                        .sessionAttr("userName", "mimeman3")
 		);
 
 		Assert.assertTrue(mimeRepository.count() == 3);
