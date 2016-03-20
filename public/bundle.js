@@ -83,13 +83,24 @@ module.exports = Backbone.View.extend({
     $('#admimerer-list').html('');
   },
   deleteUser: function() {
-    this.model.destroy();
+    console.log(this.model);
+    console.log("hittin it");
+    this.model.destroy({}, {
+        success: function() {
+          console.log("DELETED DUDE");
+        },
+        error: function(err) {
+          console.log("ERROR " + err);
+        },
+    });
+    console.log("WHAT");
   },
   initialize: function () {
     this.render();
   },
   render: function () {
-    var markup = this.template(this.model);
+    console.log(this.model);
+    var markup = this.template(this.model.attributes.model);
     this.$el.html(markup);
     return this;
   },
@@ -114,6 +125,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
+var UserModel = require('./userModel');
 var UserCollection = require('./userCollection.js');
 var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
@@ -136,7 +148,8 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            new CurrentUserView({model: response});
+            var currentUser = new UserModel({model: response});
+            new CurrentUserView({model: currentUser});
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
@@ -172,7 +185,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":15,"./templates":17,"./userCollection.js":18,"backbone":12,"jquery":13,"underscore":14}],8:[function(require,module,exports){
+},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":15,"./templates":17,"./userCollection.js":18,"./userModel":19,"backbone":12,"jquery":13,"underscore":14}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
