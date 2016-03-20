@@ -105,7 +105,7 @@ public class WillYouBeMimeController {
             mimeRepository.delete(mime);
             session.invalidate();
         } else {
-            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
+            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone else's profile.");
         }
     }
 
@@ -115,7 +115,7 @@ public class WillYouBeMimeController {
             mimeRepository.delete(mime);
             session.invalidate();
         } else {
-            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
+            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone else's profile.");
         }
     }
 
