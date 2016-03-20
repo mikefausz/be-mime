@@ -4,6 +4,9 @@
 .fixed {
   position: fixed; }
 
+.dark-grey {
+  background-color: #424242; }
+
 h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif; }
 
@@ -27,7 +30,6 @@ h1 {
   #home h2 {
     text-shadow: 1px 1px 2px black; }
   #home .well {
-    background: #424242;
     border: 0;
     border-radius: 0;
     border-bottom-right-radius: 8px;
@@ -87,10 +89,25 @@ ul {
   padding: 0; }
 
 #current-user-prof {
-  padding-right: 105px;
+  padding-right: 135px;
   margin-top: 20px; }
   #current-user-prof button {
     margin-top: 20px; }
+
+#profile-list-header {
+  position: fixed;
+  background: white;
+  width: 43%;
+  z-index: 1; }
+
+#profile-list {
+  margin-top: 56px; }
+
+#admimerer-well {
+  position: fixed;
+  width: 20%; }
+  #admimerer-well h3 {
+    margin-top: 0; }
 
 #admimirer-list .ad-avatar {
   width: 50px;
@@ -101,5 +118,9 @@ ul {
 #admimirer-list img, #admimirer-list .details {
   display: inline-block; }
 
-#admimirer-list .details {
-  vertical-align: top; }
+.admimerer {
+  color: white; }
+  .admimerer h4 {
+    margin: 0; }
+  .admimerer .details {
+    margin-left: 5px; }

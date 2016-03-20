@@ -286,9 +286,8 @@ module.exports = {
   ].join(''),
 
   admimerers :[
-    `
-      <img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
-    <ul class="details">
+    `<img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
+     <ul class="details">
       <li><h4><%= userName %></h4></li>
       <li><strong><%= age %></strong> <%= city %>, <%= state %></p></li>
     </ul>`
