@@ -3,6 +3,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
+var UserModel = require('./userModel');
 var UserCollection = require('./userCollection.js');
 var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
@@ -25,7 +26,8 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            new CurrentUserView({model: response});
+            var currentUser = new UserModel({model: response});
+            new CurrentUserView({model: currentUser});
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
