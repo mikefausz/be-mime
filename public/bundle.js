@@ -83,13 +83,24 @@ module.exports = Backbone.View.extend({
     $('#admimerer-list').html('');
   },
   deleteUser: function() {
-    this.model.destroy();
+    console.log(this.model);
+    console.log("hittin it");
+    this.model.destroy({}, {
+        success: function() {
+          console.log("DELETED DUDE");
+        },
+        error: function(err) {
+          console.log("ERROR " + err);
+        },
+    });
+    console.log("WHAT");
   },
   initialize: function () {
     this.render();
   },
   render: function () {
-    var markup = this.template(this.model);
+    console.log(this.model);
+    var markup = this.template(this.model.attributes.model);
     this.$el.html(markup);
     return this;
   },
@@ -114,6 +125,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var templates = require('./templates');
 var LoginModel = require('./loginModel');
+var UserModel = require('./userModel');
 var UserCollection = require('./userCollection.js');
 var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
@@ -136,7 +148,8 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            new CurrentUserView({model: response});
+            var currentUser = new UserModel({model: response});
+            new CurrentUserView({model: currentUser});
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
@@ -172,7 +185,7 @@ module.exports = Backbone.View.extend({
   }
 });
 
-},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":15,"./templates":17,"./userCollection.js":18,"backbone":12,"jquery":13,"underscore":14}],8:[function(require,module,exports){
+},{"./admimererCollection.js":1,"./admimererListView.js":2,"./currentUserView.js":5,"./loginModel":8,"./profileListView.js":15,"./templates":17,"./userCollection.js":18,"./userModel":19,"backbone":12,"jquery":13,"underscore":14}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -13781,6 +13794,124 @@ module.exports = {
         <li class="text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
       </ul>
     </div>`
+  ].join(''),
+
+  editProf: [
+    `<form role="form">
+      <div class="form-group form">
+        <input type="text" class="form-control" id="userName" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="pwd" placeholder="Password">
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <select class="form-control" id="age">
+            <option value="">Age</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="city" placeholder="City">
+        </div>
+        <div class="col-sm-3">
+          <select class="form-control" id="state">
+            <option value="">State</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="DC">DC</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="imageUrl" placeholder="Image URL">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="vidUrl" placeholder="Profile Video URL">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="interests" placeholder="Interests">
+      </div>
+      <button type="submit" class="btn btn-default btn-block">Create New Account</button>
+    </form>`
   ].join(''),
 
   profile: [

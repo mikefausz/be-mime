@@ -20,13 +20,24 @@ module.exports = Backbone.View.extend({
     $('#admimerer-list').html('');
   },
   deleteUser: function() {
-    this.model.destroy();
+    console.log(this.model);
+    console.log("hittin it");
+    this.model.destroy({}, {
+        success: function() {
+          console.log("DELETED DUDE");
+        },
+        error: function(err) {
+          console.log("ERROR " + err);
+        },
+    });
+    console.log("WHAT");
   },
   initialize: function () {
     this.render();
   },
   render: function () {
-    var markup = this.template(this.model);
+    console.log(this.model);
+    var markup = this.template(this.model.attributes.model);
     this.$el.html(markup);
     return this;
   },
