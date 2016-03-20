@@ -1,6 +1,12 @@
 package com.mimetroupe.entities;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by branden on 3/17/16 at 13:29.
@@ -39,14 +45,19 @@ public class Mime {
     @Column(nullable = false)
     private String state;
 
-    @Column(nullable = false)
-    private String influences;
+//    private String influences;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "admimerer")
+    private List<Admimerer> admimerer = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "mime")
+    private List<Admimerer> mime = new ArrayList<>();
 
 
     public Mime() {
     }
 
-    public Mime(String userName, String password, String fullName, int age, String imageUrl, String profileVideoUrl, String interests, String city, String state, String influences) {
+    public Mime(String userName, String password, String fullName, int age, String imageUrl, String profileVideoUrl, String interests, String city, String state) {
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
@@ -56,7 +67,6 @@ public class Mime {
         this.interests = interests;
         this.city = city;
         this.state = state;
-        this.influences = influences;
     }
 
     public String getUserName() {
@@ -129,14 +139,6 @@ public class Mime {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public String getInfluences() {
-        return influences;
-    }
-
-    public void setInfluences(String influences) {
-        this.influences = influences;
     }
 
     public int getId() {

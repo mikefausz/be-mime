@@ -45,9 +45,22 @@ public class WillYouBeMimeController {
     @RequestMapping(path = "/mime", method = RequestMethod.POST)
     public Mime createMime(@RequestBody Mime mime) throws Exception {
 
-        Mime mimeDb = mimeRepository.findByUserName(mime.getUserName());
 
-        if (mimeDb == null) {
+        if (mimeRepository.findByUserName(mime.getUserName()) == null) {
+
+            //just a little check to make sure all the fields are entered so we don't break any null constraints in DB
+            if (    (mime.getUserName() == null || mime.getUserName().length() <= 1 ) ||
+                    (mime.getPassword() == null || mime.getPassword().length() <= 1 ) ||
+                    (mime.getFullName() == null || mime.getFullName().length() <=1 ) ||
+                    (mime.getAge() == 0) ||
+                    (mime.getImageUrl() == null || mime.getImageUrl().length() <= 1) ||
+                    (mime.getProfileVideoUrl() == null || mime.getProfileVideoUrl().length() <= 1) ||
+                    (mime.getInterests() == null || mime.getInterests().length() <= 1) ||
+                    (mime.getCity() == null || mime.getCity().length() <= 1) ||
+                    (mime.getState() == null || mime.getState().length() <= 1)
+            ) throw new Exception("Membership form not filled out");
+
+
             mime.setPassword(PasswordStorage.createHash(mime.getPassword()));
             return mimeRepository.save(mime);
         } else {
@@ -61,7 +74,7 @@ public class WillYouBeMimeController {
         if (session.getAttribute("userName") != null) {
             return mimeRepository.findAllWhereUserNameNot((String) session.getAttribute("userName"));
         } else {
-            throw new Exception("You are a sneaky Mime, and sneaky Mimes do not get Admimerers");
+            throw new Exception("You are a sneaky Mime, and sneaky Mimes are not Admimered");
         }
     }
 
@@ -76,20 +89,35 @@ public class WillYouBeMimeController {
 
     //edits currently logged in mime account
     @RequestMapping(path = "/mime", method = RequestMethod.PUT)
-    public void editProfile(@RequestBody Mime mime) {
-        mimeRepository.save(mime);
+    public void editProfile(@RequestBody Mime mime, HttpSession session) throws Exception {
+
+        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+            mimeRepository.save(mime);
+        } else {
+            throw new Exception("Mimes may make many magnificent modifications. But not this one.");
+        }
     }
 
     //deletes currently logged in mime account
     @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
-    public void deleteProfile(@RequestBody Mime mime, HttpSession session) {
-
-//        admimererRepository.deleteCascade(mime.getId());
-
-        mimeRepository.delete(mime);
-        session.invalidate();
+    public void deleteProfile(@RequestBody Mime mime, HttpSession session) throws Exception {
+        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+            mimeRepository.delete(mime);
+            session.invalidate();
+        } else {
+            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
+        }
     }
 
+    @RequestMapping(path = "/mime/{id}", method = RequestMethod.DELETE)
+    public void deleteProfile(@RequestBody Mime mime, HttpSession session, @PathVariable("id") Integer id) throws Exception {
+        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+            mimeRepository.delete(mime);
+            session.invalidate();
+        } else {
+            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
+        }
+    }
 
 
 
@@ -111,28 +139,35 @@ public class WillYouBeMimeController {
 
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer", method = RequestMethod.POST)
-    public void addAdmimerer(HttpSession session,@RequestBody Mime mime) {
+    public void addAdmimerer(HttpSession session, @RequestBody Mime mime) throws Exception {
 
-        Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
-        Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
-
-        admimererRepository.save(new Admimerer(mimeUser, mimeFromPage));
+        if (session.getAttribute("userName") != null) {
+            Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
+            Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+            admimererRepository.save(new Admimerer(mimeUser, mimeFromPage));
+        } else {
+            throw new Exception("Mimes must make moves merely meanwhile moored");  //this one is a bit of a stretch
+        }
     }
 
     //adds admimerers. IE likes.
     @RequestMapping(path = "/admimerer/{id}", method = RequestMethod.POST)
-    public void addAdmimererSingle(HttpSession session,@RequestBody Mime mime, @PathVariable("id") Integer id) {
+    public void addAdmimererSingle(HttpSession session,@RequestBody Mime mime, @PathVariable("id") Integer id) throws Exception {
 
-        Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
-        Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
-
-        admimererRepository.save(new Admimerer(mimeUser, mime));
+        if (session.getAttribute("userName") != null) {
+            Mime mimeFromPage = mimeRepository.findByUserName(mime.getUserName());
+            Mime mimeUser = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+            admimererRepository.save(new Admimerer(mimeUser, mimeFromPage));
+        } else {
+            throw new Exception("Mimes must make moves merely meanwhile moored");  //this one is a bit of a stretch
+        }
     }
 
 
     //returns a list of all the mimes that a specific mime admimers
     @RequestMapping(path = "/admimerer", method = RequestMethod.GET)
     public List<Mime> viewAdmimerers(HttpSession session) {
+
         Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
         List<Admimerer> admimerers = admimererRepository.findByMime(mime);
         List<Mime> mimes = new ArrayList<>();
@@ -156,8 +191,13 @@ public class WillYouBeMimeController {
 
     @RequestMapping(path = "/mimeMatches", method = RequestMethod.GET)
     public List<Mime> mimeMatches(HttpSession session) {
-
-        return null;
+        Mime mime = mimeRepository.findByUserName((String) session.getAttribute("userName"));
+        List<Admimerer> admimerers = admimererRepository.findMimeByMimeEquals(mime);
+        List<Mime> mimes = new ArrayList<>();
+        for (Admimerer a : admimerers) {
+            mimes.add(a.getAdmimerer());
+        }
+        return mimes;
     }
 
 
