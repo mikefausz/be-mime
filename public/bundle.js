@@ -50,7 +50,7 @@ var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  className: 'row admimerer',
+  className: 'well admimerer',
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {
@@ -64,6 +64,7 @@ module.exports = Backbone.View.extend({
 var Backbone = require('backbone');
 var tmpl = require('./templates');
 var _ = require('underscore');
+var UserModel = require('./userModel.js');
 var LogoutModel = require('./logoutModel.js');
 
 module.exports = Backbone.View.extend({
@@ -71,6 +72,7 @@ module.exports = Backbone.View.extend({
   template: _.template(tmpl.currentUser),
   events: {
     'click button': 'logoutUser',
+    'click .glyphicon-pencil': 'toggleEdit',
     'click .glyphicon-remove-sign': 'deleteUser'
   },
   logoutUser: function() {
@@ -82,31 +84,29 @@ module.exports = Backbone.View.extend({
     $('#profile-list').html('');
     $('#admimerer-list').html('');
   },
+  toggleEdit: function() {
+    $('#current-user-prof').toggleClass('hidden');
+    $('#edit-form').toggleClass('hidden');
+  },
   deleteUser: function() {
-    console.log(this.model);
+    console.log("this model in the delete: " + this.model.attributes);
     console.log("hittin it");
-    this.model.destroy({}, {
-        success: function() {
-          console.log("DELETED DUDE");
-        },
-        error: function(err) {
-          console.log("ERROR " + err);
-        },
-    });
+    this.model.destroy();
     console.log("WHAT");
   },
   initialize: function () {
     this.render();
+    window.model = this.model;
   },
   render: function () {
-    console.log(this.model);
-    var markup = this.template(this.model.attributes.model);
+    console.log("this model in the render: " + this.model.attributes);
+    var markup = this.template(this.model);
     this.$el.html(markup);
     return this;
   },
 });
 
-},{"./logoutModel.js":9,"./templates":17,"backbone":12,"underscore":14}],6:[function(require,module,exports){
+},{"./logoutModel.js":9,"./templates":17,"./userModel.js":19,"backbone":12,"underscore":14}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var LoginModel = require('./loginModel');
 
@@ -148,8 +148,9 @@ module.exports = Backbone.View.extend({
     var that = this;
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
-            var currentUser = new UserModel({model: response});
-            new CurrentUserView({model: currentUser});
+            // var currentUser = new UserModel({model: response});
+            var currView = new CurrentUserView({model: response});
+            console.log(currView);
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
@@ -13616,7 +13617,7 @@ var _ = require('underscore');
 var AdmimererModel = require('./admimererModel.js');
 
 module.exports = Backbone.View.extend({
-  tagName: 'article',
+  className: 'well',
   template: _.template(tmpl.profile),
   events: {
     'click .glyphicon-heart': 'admimerProf'
@@ -13783,10 +13784,15 @@ module.exports = {
 
   currentUser: [
     `<div class="row text-left">
-      <h2>Welcome, <%= userName %></h2>
-      <button type="button" class="btn btn-default">Log Out</button>
       <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
-      <h2><%= userName %></h2>
+      <div class="row">
+        <div class="col-lg-7">
+          <h1><%= userName %></h1>
+        </div>
+        <div class="col-lg-5 text-right">
+          <button type="button" class="btn btn-default ">Log Out</button>
+        </div>
+      </div>
       <ul class="row-left">
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
@@ -13918,7 +13924,7 @@ module.exports = {
 
     `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
     <ul>
-      <li><h3><%= userName %></h3></li>
+      <li><h2><%= userName %></h2></li>
       <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
       <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
       <li><%= interests %></li>
@@ -13955,9 +13961,6 @@ var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
-  defaults: {
-    influences: "Marcel Marceau",
-  },
   // defaults: {
   //   userName: '',
   //   password: '',

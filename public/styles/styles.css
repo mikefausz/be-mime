@@ -1,13 +1,15 @@
 .hidden {
   display: none; }
 
+.fixed {
+  position: fixed; }
+
 h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif; }
 
 h1, h2, h3 {
   font-weight: 700;
-  text-transform: lowercase;
-  text-shadow: 1px 1px 2px black; }
+  text-transform: lowercase; }
 
 h1 {
   font-size: 42px; }
@@ -22,42 +24,55 @@ h1 {
   background-position-x: -124%;
   background-size: 81%;
   background-repeat: no-repeat; }
+  #home h2 {
+    text-shadow: 1px 1px 2px black; }
+  #home .well {
+    background: #424242;
+    border: 0;
+    border-radius: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 44.5%;
+    float: right;
+    margin-right: 3.5%;
+    margin-bottom: 4%;
+    padding: 3% 3% 4% 3%;
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75); }
+    #home .well:hover {
+      cursor: pointer; }
+    #home .well h2 {
+      color: white; }
 
-#header {
+.header {
   background: black;
   color: white;
   padding: 15px 5%; }
-  #header h1:hover {
+  .header h1:hover {
     cursor: pointer; }
-  #header form {
+  .header form {
     padding: 22px 10px; }
-  #header input {
+  .header input {
     display: inline-block; }
-  #header button {
+  .header button {
     display: inline; }
 
-.well {
-  background: #424242;
-  border: 0;
-  border-radius: 0;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  width: 44.5%;
-  float: right;
-  margin-right: 3.5%;
-  margin-bottom: 4%;
-  padding: 3% 3% 4% 3%;
-  -webkit-box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75);
-  box-shadow: -1px 1px 11px -1px rgba(0, 0, 0, 0.75); }
-  .well:hover {
-    cursor: pointer; }
-  .well h2 {
-    color: white; }
+#main .header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000; }
 
 #main .margin {
   width: 90%;
   margin: auto; }
+
+#main #main-content {
+  margin: 100px auto; }
+
+#main h3 {
+  font-weight: 300;
+  color: grey; }
 
 #main li {
   margin-bottom: 5px; }
@@ -70,6 +85,12 @@ ul {
   vertical-align: top;
   list-style-type: none;
   padding: 0; }
+
+#current-user-prof {
+  padding-right: 105px;
+  margin-top: 20px; }
+  #current-user-prof button {
+    margin-top: 20px; }
 
 #admimirer-list .ad-avatar {
   width: 50px;

@@ -4,9 +4,6 @@ var _ = require('underscore');
 
 module.exports = Backbone.Model.extend({
   urlRoot: '/mime',
-  defaults: {
-    influences: "Marcel Marceau",
-  },
   // defaults: {
   //   userName: '',
   //   password: '',

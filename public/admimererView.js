@@ -3,7 +3,7 @@ var tmpl = require('./templates');
 var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-  className: 'row admimerer',
+  className: 'well admimerer',
   template: _.template(tmpl.admimerers),
   initialize: function () {},
   render: function () {

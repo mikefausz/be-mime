@@ -4,7 +4,7 @@ var _ = require('underscore');
 var AdmimererModel = require('./admimererModel.js');
 
 module.exports = Backbone.View.extend({
-  tagName: 'article',
+  className: 'well',
   template: _.template(tmpl.profile),
   events: {
     'click .glyphicon-heart': 'admimerProf'
