@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -163,18 +164,21 @@ public class WillYouBeMimeApplicationTests {
 
 		Mime m = mimeRepository.findOne(3);
 
+        HashMap map = new HashMap();
+        map.put("id", 3);
+
 		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(m);
+		String json = mapper.writeValueAsString(map);
 
 
 		mockMvc.perform(
-				MockMvcRequestBuilders.delete("/mime")
+				MockMvcRequestBuilders.delete("/mime/3")
 						.content(json)
 						.contentType("application/json")
                         .sessionAttr("userName", "mimeman3")
 		);
 
-		Assert.assertTrue(mimeRepository.count() == 3);
+		Assert.assertTrue(mimeRepository.findOne(3) == null);
 	}
 
 }
