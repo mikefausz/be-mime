@@ -11,8 +11,7 @@ h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif; }
 
 h1, h2, h3 {
-  font-weight: 700;
-  text-transform: lowercase; }
+  font-weight: 700; }
 
 h1 {
   font-size: 42px; }
@@ -75,8 +74,6 @@ h1 {
 
 #main #main-content {
   margin: 100px auto; }
-  #main #main-content img {
-    margin-top: 16px; }
 
 #main h3 {
   font-weight: 300;
@@ -101,6 +98,8 @@ ul {
 #current-user-prof {
   padding-right: 135px;
   margin-top: 20px; }
+  #current-user-prof img {
+    border: 1px solid lightgrey; }
   #current-user-prof button {
     margin-top: 20px; }
 
@@ -112,9 +111,18 @@ ul {
   background: white;
   width: 43%;
   z-index: 1; }
+  #profile-list-header h3 {
+    display: inline-block;
+    margin-right: 30px; }
+  #profile-list-header ul {
+    vertical-align: middle; }
+  #profile-list-header li {
+    margin-right: 10px; }
 
 #profile-list {
   margin-top: 56px; }
+  #profile-list img {
+    margin-top: 16px; }
 
 iframe {
   width: 100%;

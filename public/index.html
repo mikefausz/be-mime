@@ -17,7 +17,7 @@
       <div class="container-fluid header">
         <div class="row">
           <div class="col-sm-7 text-left">
-            <h1>Be Mime <small>A dating site for quiet types</small></h1>
+            <h1>be mime <small>a dating site for quiet types</small></h1>
           </div>
           <div class="col-sm-5 text-right">
             <div id="login-form">
@@ -35,10 +35,12 @@
       <div class="container-fluid">
         <div class="row header">
           <div class="col-sm-7 text-left">
-            <h1>Be Mime <small>A dating site for quiet types</small></h1>
+            <h1>be mime <small>a dating site for quiet types</small></h1>
           </div>
-          <div class="col-sm-5 text-right" id="logout-box">
-            <!-- load logout view -->
+          <div class="col-sm-5 text-right">
+            <div id="logout-box">
+                <!-- load logout view -->
+            </div>
           </div>
         </div>
       </div>
@@ -57,23 +59,26 @@
           </div>
           <div class="col-lg-6 text-left">
             <div id="profile-list-header">
-              <h3>HOT LOCAL MIMES</h3>
+              <h3>hot local mimes</h3>
+              <ul class="nav nav-pills" id="filter-pills">
+                <!-- load filter pill view -->
+              </ul>
             </div>
             <div id="profile-list">
               <!-- load in other user profiles -->
-              Finding hot mimes near you
+            </div>
+            <div class="hidden" id="admimer-list">
+              <!-- load in profiles you've admimered -->
             </div>
           </div>
         <!-- <div class="col-lg-3 text-left fixed" > -->
         <div class="col-lg-3 ">
           <div class="well text-left well dark-grey"  id="admimerer-well">
-
-
-          <h3>YOUR ADMIMERERS</h3>
-          <div id="admimerer-list">
-            <!-- load in user's admimerers -->
-          </div>
+            <h3>your admimerers</h3>
+            <div id="admimerer-list">
+              <!-- load in user's admimerers -->
             </div>
+         </div>
       </div>
     </section>
 

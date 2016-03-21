@@ -3,10 +3,6 @@ $wellGrey: #424242;
 $red:#8E0404;
 $maroon: #4A0101;
 
-body {
-
-}
-
 .hidden {
   display: none;
 }
@@ -24,7 +20,6 @@ h1, h2, h3 {
 
 h1, h2, h3 {
   font-weight: 700;
-  text-transform: lowercase;
 }
 
 h1 {
@@ -105,9 +100,6 @@ h1 {
   }
   #main-content {
     margin: 100px auto;
-    img {
-      margin-top: 16px;
-    }
   }
   h3 {
     font-weight: 300;
@@ -135,6 +127,9 @@ ul {
 #current-user-prof {
   padding-right: 135px;
   margin-top: 20px;
+  img {
+    border: 1px solid lightgrey;
+  }
   button {
     margin-top: 20px;
   }
@@ -149,10 +144,23 @@ ul {
   background: white;
   width: 43%;
   z-index: 1;
+  h3 {
+    display: inline-block;
+    margin-right: 30px;
+  }
+  ul {
+    vertical-align: middle;
+  }
+  li {
+    margin-right: 10px;
+  }
 }
 
 #profile-list {
   margin-top: 56px;
+  img {
+    margin-top: 16px;
+  }
 }
 
  iframe {

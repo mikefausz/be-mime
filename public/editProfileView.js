@@ -15,25 +15,24 @@ module.exports = Backbone.View.extend({
   },
   editProfile: function (event) {
       event.preventDefault();
-      var first = this.$el.find('#firstName').val();
-      var last = this.$el.find('#lastName').val();
+      this.toggleEdit();
       this.model.set({
-        userName: this.$el.find('#userName').val(),
-        password: this.$el.find('#pwd').val(),
-        fullName: first + ' ' + last,
-        imageUrl: this.$el.find('#imageUrl').val(),
-        profileVideoUrl: this.$el.find('#vidUrl').val(),
-        age: this.$el.find('#age').val(),
-        interests: this.$el.find('#interests').val(),
-        city: this.$el.find('#city').val(),
-        state: this.$el.find('#state').val(),
+        // userName: this.$el.find('#edit-userName').val(),
+        // password: this.$el.find('#edit-pwd').val(),
+        fullName: this.$el.find('#edit-fullName').val(),
+        imageUrl: this.$el.find('#edit-imageUrl').val(),
+        profileVideoUrl: this.$el.find('#edit-vidUrl').val(),
+        age: this.$el.find('#edit-age').val(),
+        interests: this.$el.find('#edit-interests').val(),
+        city: this.$el.find('#edit-city').val(),
+        state: this.$el.find('#edit-state').val(),
       });
       this.$el.find('input').val('');
       this.$el.find('select').val('');
-      this.model.save()(null, {
-        url: '/mime',
+      this.model.save(null, {
         type: 'PUT'
-      });;
+      });
+      new CurrentUserView({model: this.model});
   },
   toggleEdit: function() {
     $('#current-user-prof').removeClass('hidden');

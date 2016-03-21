@@ -139,6 +139,11 @@ module.exports = {
     `<button type="button" class="btn btn-default ">Log Out</button>`
   ].join(''),
 
+  filterPills: [
+    `<li class="active pointer" id="all">All</li>
+    <li class="pointer" id="admimers">Mimes You Admimer</li>`
+  ].join(''),
+
   currentUser: [
     `<div class="row text-left">
       <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
@@ -150,26 +155,22 @@ module.exports = {
       <ul class="row-left">
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
-        <li class="pointer text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
-        <li class="pointer text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
+        <li class="pointer text-muted" id="edit-prof-btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
+        <li class="pointer text-muted" id="delete-prof-btn"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
       </ul>
     </div>`
   ].join(''),
 
   editProf: [
-    `<h1>Edit Profile</h1>
-      <form role="form">
-      <div class="form-group form">
-        <input type="text" class="form-control" id="userName" value="<%= userName %>">
+
+    `<h3>edit profile</h3>
+     <h2><%= userName %></h2>
+     <form role="form">
+      <div class="form-group">
+          <input type="text" class="form-control" id="edit-fullName" placeholder="Full Name" value="<%= fullName %>">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="pwd" value="<%= password %>">
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" id="fullName" value="<%= fullName %>">
-      </div>
-      <div class="form-group">
-          <select class="form-control" id="age">
+          <select class="form-control" id="edit-age">
             <option value="">Age</option>
             <option value="18">18</option>
             <option value="19">19</option>
@@ -197,10 +198,10 @@ module.exports = {
           </select>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="city" value="<%= city %>">
+          <input type="text" class="form-control" id="edit-city" placeholder="City" value="<%= city %>">
         </div>
         <div class="form-group">
-          <select class="form-control" id="state">
+          <select class="form-control" id="edit-state">
             <option value="">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -256,13 +257,13 @@ module.exports = {
           </select>
         </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="imageUrl" value="<%= imageUrl %>">
+        <input type="text" class="form-control" id="edit-imageUrl" placeholder="Image URL" value="<%= imageUrl %>">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="vidUrl" value="<%= profileVideoUrl %>">
+        <input type="text" class="form-control" id="edit-vidUrl" placeholder="Profile Video URL" value="<%= profileVideoUrl %>">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="interests" value="<%= interests %>">
+        <input type="text" class="form-control" id="edit-interests" placeholder="Interests" value="<%= interests %>">
       </div>
       <button type="submit" class="btn btn-default">Submit Changes</button>
       <button type="button" class="btn btn-default">Cancel</button>
