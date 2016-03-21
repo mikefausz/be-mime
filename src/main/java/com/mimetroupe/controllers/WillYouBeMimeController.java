@@ -98,24 +98,38 @@ public class WillYouBeMimeController {
         }
     }
 
-    //deletes currently logged in mime account
-    @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
-    public void deleteProfile(@RequestBody Mime mime, HttpSession session) throws Exception {
-        if (mime.getUserName().equals(session.getAttribute("userName"))) {
-            mimeRepository.delete(mime);
-            session.invalidate();
-        } else {
-            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
-        }
-    }
 
+    //both commented out methods run delete and look for a Mime object.
+//    //deletes currently logged in mime account
+//    @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
+//    public void deleteProfile(@RequestBody Mime mime, HttpSession session) throws Exception {
+//        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+//            mimeRepository.delete(mime);
+//            session.invalidate();
+//        } else {
+//            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone else's profile.");
+//        }
+//    }
+
+//    @RequestMapping(path = "/mime/{id}", method = RequestMethod.DELETE)
+//    public void deleteProfile(@RequestBody Mime mime, HttpSession session, @PathVariable("id") Integer id) throws Exception {
+//        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+//            mimeRepository.delete(mime);
+//            session.invalidate();
+//        } else {
+//            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone else's profile.");
+//        }
+//    }
+
+    //delete route which looks for4 an id and does not take a object
     @RequestMapping(path = "/mime/{id}", method = RequestMethod.DELETE)
-    public void deleteProfile(@RequestBody Mime mime, HttpSession session, @PathVariable("id") Integer id) throws Exception {
-        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+    public void deleteProfile(HttpSession session, @PathVariable("id") Integer id) throws Exception {
+        Mime mime = mimeRepository.findOne(id);
+        if (mime != null && mime.getUserName().equals(session.getAttribute("userName"))) {
             mimeRepository.delete(mime);
             session.invalidate();
         } else {
-            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone elses profile.");
+            throw  new Exception("Mackin aint easy for a Mime. Don't make it harder by deleting someone else's profile.");
         }
     }
 
