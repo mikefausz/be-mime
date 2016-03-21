@@ -9,6 +9,8 @@ var ProfileListView = require('./profileListView.js');
 var CurrentUserView = require('./currentUserView.js');
 var AdmimererListView = require('./admimererListView.js');
 var AdmimererCollection = require('./admimererCollection.js');
+var LogoutModel = require('./logoutModel.js');
+var LogoutView = require('./logoutView.js');
 
 module.exports = Backbone.View.extend({
 
@@ -27,11 +29,7 @@ module.exports = Backbone.View.extend({
     this.collection.create(this.model.toJSON(),{
         success: function(model, response) {
             var currentUser = new UserModel(response);
-            console.log("currentUserModel: " + currView);
-            window.currUser = currentUser;
-            // delete currentUser.attributes.id;
             var currView = new CurrentUserView({model: currentUser});
-            console.log("CurrentUserView: " + currView);
             var userCollection = new UserCollection();
             userCollection.fetch().done(function(){
               new ProfileListView({collection: userCollection});
@@ -40,6 +38,7 @@ module.exports = Backbone.View.extend({
             admimererCollection.fetch().done(function(){
               new AdmimererListView({collection: admimererCollection});
             });
+            new LogoutView({model: new LogoutModel()});
             $('#home').toggleClass('hidden');
             $('#main').toggleClass('hidden');
             that.$el.find('input').val('');
@@ -49,10 +48,6 @@ module.exports = Backbone.View.extend({
             console.log('error! ' + response);
         }
     });
-
-    // window.bill = admimererCollection;
-    // window.bill2 = admimererCollection.models;
-    // window.bill3 = admimererCollection.models;
     this.model = new LoginModel({});
   },
   initialize: function () {

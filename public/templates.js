@@ -135,6 +135,10 @@ module.exports = {
     </form>`
   ].join(''),
 
+  logout: [
+    `<button type="button" class="btn btn-default ">Log Out</button>`
+  ].join(''),
+
   currentUser: [
     `<div class="row text-left">
       <img src="<%= imageUrl %>" class="img-rounded" alt="user image" width="200" height="200">
@@ -142,37 +146,29 @@ module.exports = {
         <div class="col-lg-7">
           <h1><%= userName %></h1>
         </div>
-        <div class="col-lg-5 text-right">
-          <button type="button" class="btn btn-default ">Log Out</button>
-        </div>
       </div>
       <ul class="row-left">
         <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= city %>, <%= state %></li>
         <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
-        <li class="text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
-        <li class="text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
+        <li class="pointer text-muted"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Profile</li>
+        <li class="pointer text-muted"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Profile</li>
       </ul>
     </div>`
   ].join(''),
 
   editProf: [
-    `<form role="form">
+    `<h1>Edit Profile</h1>
+      <form role="form">
       <div class="form-group form">
-        <input type="text" class="form-control" id="userName" placeholder="Username">
+        <input type="text" class="form-control" id="userName" value="<%= userName %>">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="pwd" placeholder="Password">
+        <input type="password" class="form-control" id="pwd" value="<%= password %>">
       </div>
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="firstName" placeholder="First Name">
-        </div>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-        </div>
+      <div class="form-group">
+          <input type="text" class="form-control" id="fullName" value="<%= fullName %>">
       </div>
-      <div class="form-group row">
-        <div class="col-sm-3">
+      <div class="form-group">
           <select class="form-control" id="age">
             <option value="">Age</option>
             <option value="18">18</option>
@@ -200,10 +196,10 @@ module.exports = {
             <option value="40">40</option>
           </select>
         </div>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="city" placeholder="City">
+        <div class="form-group">
+          <input type="text" class="form-control" id="city" value="<%= city %>">
         </div>
-        <div class="col-sm-3">
+        <div class="form-group">
           <select class="form-control" id="state">
             <option value="">State</option>
             <option value="AL">AL</option>
@@ -259,30 +255,40 @@ module.exports = {
             <option value="WY">WY</option>
           </select>
         </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="imageUrl" value="<%= imageUrl %>">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="imageUrl" placeholder="Image URL">
+        <input type="text" class="form-control" id="vidUrl" value="<%= profileVideoUrl %>">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="vidUrl" placeholder="Profile Video URL">
+        <input type="text" class="form-control" id="interests" value="<%= interests %>">
       </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="interests" placeholder="Interests">
-      </div>
-      <button type="submit" class="btn btn-default btn-block">Create New Account</button>
+      <button type="submit" class="btn btn-default">Submit Changes</button>
+      <button type="button" class="btn btn-default">Cancel</button>
     </form>`
   ].join(''),
 
   profile: [
-
-    `<iframe width="320" height="240" src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
-    <ul>
-      <li><h2><%= userName %></h2></li>
-      <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
-      <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
-      <li><%= interests %></li>
-      <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
-    </ul>`
+    `<iframe src="<%= profileVideoUrl %>" frameborder="0" allowfullscreen></iframe>
+    <div class="row">
+      <div class="col-lg-2 text-right">
+        <img src="<%= imageUrl %>" class="img-rounded" alt="<%= userName %> Profile Image" width="50" height="50">
+      </div>
+      <div class="col-lg-8">
+        <ul>
+          <li><h2><%= userName %></h2></li>
+          <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><%= city %>, <%= state %></em></li>
+          <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= age %></li>
+          <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= interests %></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 text-right">
+        <div class="button-box">
+          <button type="button" class="btn btn-default ">Admimer</button>
+        </div>
+      </div>
+    </div>`
   ].join(''),
 
   admimerers :[
