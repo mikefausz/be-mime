@@ -99,6 +99,19 @@ public class WillYouBeMimeController {
     }
 
 
+    //edits currently logged in mime account
+    @RequestMapping(path = "/mime/{id}", method = RequestMethod.PUT)
+    public void editProfile(@RequestBody Mime mime, HttpSession session, @PathVariable("id") Integer id) throws Exception {
+
+        if (mime.getUserName().equals(session.getAttribute("userName"))) {
+            mimeRepository.save(mime);
+        } else {
+            throw new Exception("Mimes may make many magnificent modifications. But not this one.");
+        }
+    }
+
+
+
     //both commented out methods run delete and look for a Mime object.
 //    //deletes currently logged in mime account
 //    @RequestMapping(path = "/mime", method = RequestMethod.DELETE)
